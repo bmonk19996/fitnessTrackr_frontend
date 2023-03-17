@@ -208,9 +208,30 @@ const updateRoutineActivities = async (token, RoutineActivityId, fields)=>
   try
   {
     const response = await fetch(`${BASE_URL}/${RoutineActivityId}`,{
-      method:"POST",
+      method:"PATCH",
       headers:makeHeaders(token),
       body:{
+        ...fields
+      }
+    });
+    const result = response.json();
+    return result;
+  }
+  catch(e)
+  {
+    throw e;
+  }
+}
+
+const deleteRoutineActivity = async (token, RoutineActivityId, fields) =>
+{
+  try
+  {
+    const response = await fetch(`${BASE_URL}/${RoutineActivityId}`,{
+      method:"DELETE",
+      headers:makeHeaders(token),
+      body:
+      {
         ...fields
       }
     });
