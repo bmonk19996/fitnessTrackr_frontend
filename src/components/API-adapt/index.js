@@ -1,5 +1,6 @@
 const BASE_URL = "http://localhost:3000/api";
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJlbiIsInBhc3N3b3JkIjoiYm1vbmsxOTk2IiwiaWQiOjEwMCwiaWF0IjoxNjc5MDcyMzY3LCJleHAiOjE2Nzk2NzcxNjd9.G18E33Paa-9doh8sjR_JROxU0Qltfy_BvXL4QzSbtnU'
+const routineId = 123;
 function makeHeaders(token){
     const header = { "Content-Type": "application/json" };
     if (token) {
@@ -21,7 +22,6 @@ function makeHeaders(token){
         })
       });
       const result = await response.json();
-      console.log(result)
       return result;
     }
     catch(e)
@@ -56,7 +56,6 @@ function makeHeaders(token){
         headers:makeHeaders(token),
       });
       const result = await response.json();
-      console.log(result)
       return result;
     }catch(e){
       throw e;
@@ -71,7 +70,6 @@ function makeHeaders(token){
         headers:makeHeaders(token),
       });
       const result = await response.json();
-      console.log(result)
       return result;
     }
     catch(e)
@@ -87,12 +85,13 @@ const getRoutines = async () => {
       headers: makeHeaders(),
     });
     const result = await response.json();
+    console.log(result)
     return result;
   } catch (error) {
     throw error;
   }
 };
-
+//fields must be name goal
 const makeRoutine = async(token, fields) =>
 {
   try{
@@ -104,6 +103,44 @@ const makeRoutine = async(token, fields) =>
       })
     });
     const result = await response.json();
+    return result;
+  }
+  catch(e)
+  {
+    throw e;
+  }
+}
+const updateRoutine = async(token, routineId, fields ) =>
+{
+  try
+  {
+    const response = await fetch(`${BASE_URL}/routines/${routineId}`,  {
+      method:"PATCH",
+      headers: makeHeaders(token),
+      body:JSON.stringify({
+        ...fields
+      })
+    });
+    const result = await response.json();
+    console.log(result)
+    return result;
+  }catch(e)
+  {
+    throw e;
+  }
+}
+//updateRoutine(token,126,{isPublic:true})
+const deleteRoutine = async(token, routineId) =>
+{
+  try {
+    const response = await fetch(`${BASE_URL}/routines/${routineId}`, {
+      method:"DELETE",
+      headers:makeHeaders(token),
+      body:JSON.stringify({
+        routineId: routineId
+      })
+    });
+    const result = await response.json();
     console.log(result)
     return result;
   }
@@ -112,65 +149,27 @@ const makeRoutine = async(token, fields) =>
     throw e;
   }
 }
-
-const updateRoutine = async(token, routineId, fields ) =>
+//fields is count, duration, routineId, activityId
+const addActivityToRoutine = async (token, fields)=>
 {
   try
   {
-    const response = await fetch(`${BASE_URL}/${routineId}`,  {
+    const response = await fetch(`${BASE_URL}/routines/${routineId}/activities`,{
       method:"POST",
-      headers: makeHeaders(token),
-      body:{
+      headers:makeHeaders(token),
+      body:JSON.stringify({
         ...fields
-      }
+      })
     });
     const result = await response.json();
+    console.log(result)
     return result;
   }catch(e)
   {
     throw e;
   }
 }
-
-const deleteRoutine = async(token, routineId) =>
-{
-  try {
-    const response = await fetch(`${BASE_URL}/${routineId}`, {
-      method:"DELETE",
-      headers:makeHeaders(token),
-      body:{
-        routineId: routineId
-      }
-    });
-    const result = await response.json();
-    return result;
-  }
-  catch(e)
-  {
-    throw e;
-  }
-}
-
-const addActivityToRoutine = async (token, routineId, activityId)=>
-{
-  try
-  {
-    const response = await fetch(`${BASE_URL}/${routineId}`,{
-      method:"POST",
-      headers:makeHeaders(token),
-      body:{
-        routineId:routineId,
-        activityId:activityId
-      }
-    });
-    const result = await response.json();
-    return result;
-  }catch(e)
-  {
-    throw e;
-  }
-}
-
+//addActivityToRoutine(token,126,98,54,102)
 const getAllActivities = async () =>
 {
   try
@@ -180,6 +179,7 @@ const getAllActivities = async () =>
       headers:makeHeaders()
     });
     const result = await response.json();
+    console.log(result)
     return result;
   }
   catch(e)
@@ -187,15 +187,15 @@ const getAllActivities = async () =>
     throw e;
   }
 }
-
 const getRoutinesByActivity = async(activityId) =>
 {
   try{
-    const response = await fetch(`${BASE_URL}/${activityId}/routines`,{
+    const response = await fetch(`${BASE_URL}/activities/${activityId}/routines`,{
       method:"GET",
       headers:makeHeaders(),
     });
     const result = await response.json();
+    console.log(result)
     return result;
   }catch(e)
   {
