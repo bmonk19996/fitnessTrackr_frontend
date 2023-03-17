@@ -207,14 +207,15 @@ const updateRoutineActivities = async (token, RoutineActivityId, fields)=>
 {
   try
   {
-    const response = await fetch(`${BASE_URL}/${RoutineActivityId}`,{
+    const response = await fetch(`${BASE_URL}/routine_activities/${RoutineActivityId}`,{
       method:"PATCH",
       headers:makeHeaders(token),
-      body:{
+      body:JSON.stringify({
         ...fields
-      }
+      })
     });
-    const result = response.json();
+    const result = await response.json();
+    console.log(result)
     return result;
   }
   catch(e)
@@ -223,19 +224,16 @@ const updateRoutineActivities = async (token, RoutineActivityId, fields)=>
   }
 }
 
-const deleteRoutineActivity = async (token, RoutineActivityId, fields) =>
+const deleteRoutineActivity = async (token, RoutineActivityId) =>
 {
   try
   {
-    const response = await fetch(`${BASE_URL}/${RoutineActivityId}`,{
+    const response = await fetch(`${BASE_URL}/routine_activities/${RoutineActivityId}`,{
       method:"DELETE",
       headers:makeHeaders(token),
-      body:
-      {
-        ...fields
-      }
     });
-    const result = response.json();
+    const result = await response.json();
+    console.log(result)
     return result;
   }
   catch(e)
