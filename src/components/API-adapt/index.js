@@ -1,6 +1,4 @@
 const BASE_URL = "http://localhost:3000/api";
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJlbiIsInBhc3N3b3JkIjoiYm1vbmsxOTk2IiwiaWQiOjEwMCwiaWF0IjoxNjc5MDcyMzY3LCJleHAiOjE2Nzk2NzcxNjd9.G18E33Paa-9doh8sjR_JROxU0Qltfy_BvXL4QzSbtnU'
-const routineId = 123;
 function makeHeaders(token){
     const header = { "Content-Type": "application/json" };
     if (token) {
