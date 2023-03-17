@@ -177,7 +177,7 @@ const getAllActivities = async () =>
   {
     const response = await fetch(`${BASE_URL}/activities`, {
       method:"GET",
-      header:makeHeaders()
+      headers:makeHeaders()
     });
     const result = await response.json();
     return result;
@@ -198,6 +198,26 @@ const getRoutinesByActivity = async(activityId) =>
     const result = await response.json();
     return result;
   }catch(e)
+  {
+    throw e;
+  }
+}
+
+const updateRoutineActivities = async (token, RoutineActivityId, fields)=>
+{
+  try
+  {
+    const response = await fetch(`${BASE_URL}/${RoutineActivityId}`,{
+      method:"POST",
+      headers:makeHeaders(token),
+      body:{
+        ...fields
+      }
+    });
+    const result = response.json();
+    return result;
+  }
+  catch(e)
   {
     throw e;
   }
