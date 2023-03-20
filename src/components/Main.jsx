@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Navbar } from "./";
 import { Routes, Route } from "react-router-dom";
-import {Login, PublicRoutines, Register, CreateRoutine, ProfilePage} from "./"
+import {Login, PublicRoutines, Register, CreateRoutine, ProfilePage, Navbar, EditRoutine } from "./"
 
 
 const Main = () => {
@@ -25,6 +24,10 @@ const Main = () => {
           <Route
             path="/ProfilePage"
             element={<ProfilePage></ProfilePage>}
+          />
+                    <Route
+            path="/edit/:routineId"
+            element={<EditRoutine></EditRoutine>}
           />
         </Routes>
       </div>

@@ -6,4 +6,4 @@ export { default as ProfilePage } from "./ProfilePage";
 export { default as PublicRoutines } from "./PublicRoutines";
 export { default as Register } from "./Register";
 export { default as Routine } from "./Routine";
-export{ default as UpdateRoutine } from "./UpdateRoutine"
+export{ default as EditRoutine } from "./EditRoutine"
