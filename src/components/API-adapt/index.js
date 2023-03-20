@@ -222,11 +222,7 @@ export const updateRoutineActivities = async (token, RoutineActivityId, fields)=
   }
 }
 
-<<<<<<< HEAD
-export const deleteRoutineActivity = async (token, RoutineActivityId, fields) =>
-=======
-const deleteRoutineActivity = async (token, RoutineActivityId) =>
->>>>>>> 9d126db15cfbcb6216377c43129347f364592242
+export const deleteRoutineActivity = async (token, RoutineActivityId) =>
 {
   try
   {
