@@ -15,7 +15,7 @@ const Login = () => {
       localStorage.setItem("token", result.token);
       navigate("/");
     } else {
-      setMessage("invalid username or password");
+      setMessage(result.message);
     }
   };
 
