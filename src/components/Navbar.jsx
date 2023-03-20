@@ -1,5 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+function isLoggedIn()
+  {
+    if(localStorage.getItem("token")) return true;
+    
+    return false;
+  }
+
 const Navbar = () => {
 
 
@@ -12,7 +20,7 @@ const Navbar = () => {
       <Link to="/">
         <h2> Fitness Tracker</h2>
       </Link>
-      {localStorage.getItem("token") ? (
+      {isLoggedIn() ? (
         <button
           className="nav-items"
           onClick={() => {
