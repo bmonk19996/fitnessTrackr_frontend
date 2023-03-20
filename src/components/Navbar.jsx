@@ -21,15 +21,18 @@ const Navbar = () => {
         <h2> Fitness Tracker</h2>
       </Link>
       {isLoggedIn() ? (
+        <>
         <button
           className="nav-items"
           onClick={() => {
             logOut();
+            window.location.reload();
           }}
         >
-          {" "}
-          Logout{" "}
+          Logout
         </button>
+        <Link to="/createRoutine">Add Routine</Link>
+        </>
       ) : (<>
 
         <Link to="/login">Login</Link>

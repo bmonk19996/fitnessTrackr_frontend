@@ -5,6 +5,7 @@ import {Routes, Route} from "react-router-dom";
 import Login from "./Login";
 import PublicRoutines from "./PublicRoutines";
 import Register from "./Register";
+import { CreateRoutine } from "./CreateRoutine";
 
 const Main = () => {
   return (
@@ -26,7 +27,11 @@ const Main = () => {
             {<Register>
               
             </Register>}/>
-            
+            <Route path="/createRoutine" element={
+              <CreateRoutine>
+
+              </CreateRoutine>
+            }/>
         </Routes>
       </div>
     </div>
