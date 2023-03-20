@@ -7,7 +7,7 @@ import {getMyUser, makeRoutine} from "./API-adapt/index"
 
 
 
-export const CreateRoutine =(props)=>
+const CreateRoutine =(props)=>
 {
     const [name, setRoutineName] = useState(null);
     const [goal, setRoutineGoal] = useState(null);
@@ -22,8 +22,8 @@ export const CreateRoutine =(props)=>
     console.log(result);
     if(!result.message)
     {
-        //navigate("/");
-        //window.location.reload();
+        navigate("/");
+        window.location.reload();
     }else{
         console.log(result.message);
     }
@@ -50,3 +50,5 @@ export const CreateRoutine =(props)=>
         </div>
     )
 }
+
+export default CreateRoutine
