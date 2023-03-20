@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Navbar } from "./";
 import {Routes, Route} from "react-router-dom";
 
-import {Login} from "./Login";
+import Login from "./Login";
 import PublicRoutines from "./PublicRoutines";
+import Register from "./Register";
 
 const Main = () => {
   return (
@@ -16,10 +17,15 @@ const Main = () => {
 
               </PublicRoutines>
             }></Route>
-            {/* <Route path='/login' element=
+
+            <Route path='/login' element=
             {<Login>
               
-            </Login>}/> */}
+            </Login>}/>
+            <Route path='/register' element=
+            {<Register>
+              
+            </Register>}/>
             
         </Routes>
       </div>

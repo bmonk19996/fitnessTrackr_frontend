@@ -11,9 +11,7 @@ const PublicRoutines = (props)=>
     const pullRoutines = async () =>
     {
         try{
-        console.log("hi");
         let result = await getRoutines();
-        console.log("hello from the other side")
         setRoutines(result);
         }
         catch(e)
