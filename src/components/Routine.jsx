@@ -1,5 +1,6 @@
 import react, {useState, useEffect} from "react";
 import {getMyUser} from "./API-adapt/index"
+import { Link } from "react-router-dom";
 const Routine = (props) =>
 {
     const [isOwner, setIsOwner] = useState(false)
@@ -23,13 +24,15 @@ const Routine = (props) =>
             <div>{routine.goal}</div>
             <div><h2>Activities: </h2></div>
             {
-                isOwner ? <button>edit</button>: null
+                isOwner ? <Link to={`/edit/${routine.id}`}>
+                <button>edit</button>
+                </Link>: null
             }
             <div>{
                 routine.activities.map((activity, idx)=>{
                     return (
                         
-                        <div id="activity" key={`activities + ${idx}`}>
+                        <div id="activity" key={`activities: ${idx}`}>
                         <div>{activity.name}</div>
                         <div>{activity.description}</div>
                         </div>
