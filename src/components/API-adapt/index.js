@@ -7,7 +7,7 @@ function makeHeaders(token){
     return header;
 }
 
-  const register = async (username, password)=>
+  export const register = async (username, password)=>
   {
     try
     {
@@ -27,7 +27,7 @@ function makeHeaders(token){
       throw e;
     }
   }
-  const login = async (username, password) =>{
+  export const login = async (username, password) =>{
 
     try{
       const response = await fetch(`${BASE_URL}/users/login`,{
@@ -46,7 +46,7 @@ function makeHeaders(token){
     }
   }
 
-  const getMyUser = async (token) =>
+  export const getMyUser = async (token) =>
   {
     try{
       const response = await fetch(`${BASE_URL}/users/me`, {
@@ -59,7 +59,7 @@ function makeHeaders(token){
       throw e;
     }
   }
-  const getUserPublicRoutines = async (token, username) =>
+  export const getUserPublicRoutines = async (token, username) =>
   {
     try
     {
@@ -76,7 +76,7 @@ function makeHeaders(token){
     }
   }
 
-const getRoutines = async () => {
+ export const getRoutines = async () => {
   try {
     const response = await fetch(`${BASE_URL}/routines`, {
       method: "GET",
@@ -90,7 +90,7 @@ const getRoutines = async () => {
   }
 };
 //fields must be name goal
-const makeRoutine = async(token, fields) =>
+export const makeRoutine = async(token, fields) =>
 {
   try{
     const response = await fetch(`${BASE_URL}/routines`, {
@@ -108,7 +108,7 @@ const makeRoutine = async(token, fields) =>
     throw e;
   }
 }
-const updateRoutine = async(token, routineId, fields ) =>
+export const updateRoutine = async(token, routineId, fields ) =>
 {
   try
   {
@@ -128,7 +128,7 @@ const updateRoutine = async(token, routineId, fields ) =>
   }
 }
 //updateRoutine(token,126,{isPublic:true})
-const deleteRoutine = async(token, routineId) =>
+export const deleteRoutine = async(token, routineId) =>
 {
   try {
     const response = await fetch(`${BASE_URL}/routines/${routineId}`, {
@@ -148,7 +148,7 @@ const deleteRoutine = async(token, routineId) =>
   }
 }
 //fields is count, duration, routineId, activityId
-const addActivityToRoutine = async (token, fields)=>
+export const addActivityToRoutine = async (token, fields)=>
 {
   try
   {
@@ -168,7 +168,7 @@ const addActivityToRoutine = async (token, fields)=>
   }
 }
 //addActivityToRoutine(token,126,98,54,102)
-const getAllActivities = async () =>
+export const getAllActivities = async () =>
 {
   try
   {
@@ -185,7 +185,7 @@ const getAllActivities = async () =>
     throw e;
   }
 }
-const getRoutinesByActivity = async(activityId) =>
+export const getRoutinesByActivity = async(activityId) =>
 {
   try{
     const response = await fetch(`${BASE_URL}/activities/${activityId}/routines`,{
@@ -201,7 +201,7 @@ const getRoutinesByActivity = async(activityId) =>
   }
 }
 
-const updateRoutineActivities = async (token, RoutineActivityId, fields)=>
+export const updateRoutineActivities = async (token, RoutineActivityId, fields)=>
 {
   try
   {
@@ -222,7 +222,11 @@ const updateRoutineActivities = async (token, RoutineActivityId, fields)=>
   }
 }
 
+<<<<<<< HEAD
+export const deleteRoutineActivity = async (token, RoutineActivityId, fields) =>
+=======
 const deleteRoutineActivity = async (token, RoutineActivityId) =>
+>>>>>>> 9d126db15cfbcb6216377c43129347f364592242
 {
   try
   {
@@ -239,3 +243,4 @@ const deleteRoutineActivity = async (token, RoutineActivityId) =>
     throw e;
   }
 }
+
