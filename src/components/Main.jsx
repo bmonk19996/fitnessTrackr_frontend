@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "./";
 import { Routes, Route } from "react-router-dom";
+import {Login, PublicRoutines, Register, CreateRoutine, ProfilePage} from "./"
 
-import Login from "./Login";
-import PublicRoutines from "./PublicRoutines";
-import Register from "./Register";
-import CreateRoutine  from "./CreateRoutine";
-import ProfilePage from "./ProfilePage";
 
 const Main = () => {
   return (

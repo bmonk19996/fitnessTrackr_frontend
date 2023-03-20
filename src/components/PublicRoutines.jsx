@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {getRoutines} from "./API-adapt/index";
 
-import Routine from "./Routines";
+import {Routine} from "./";
 
 const PublicRoutines = (props)=>
 {
