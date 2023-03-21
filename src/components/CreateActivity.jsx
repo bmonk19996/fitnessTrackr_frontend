@@ -1,7 +1,7 @@
-import react, { useState } from "react";
+import  { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getMyUser, makeActivity, makeRoutine } from "./API-adapt/index";
+import { makeActivity } from "./API-adapt/index";
 
 //creatorid, isPublic, name, goal
 
