@@ -8,3 +8,5 @@ export { default as Register } from "./Register";
 export { default as Routine } from "./Routine";
 export{ default as EditRoutine } from "./EditRoutine"
 export { default as HomePage } from "./HomePage"
+export {default as Activities} from "./Activities"
+export {default as ActivityCard} from "./ActivityCard"

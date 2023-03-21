@@ -8,7 +8,8 @@ import {
   ProfilePage,
   Navbar,
   EditRoutine,
-  HomePage
+  HomePage,
+  Activities
 } from "./";
 
 const Main = () => {
@@ -22,7 +23,10 @@ const Main = () => {
             path="/routines"
             element={<PublicRoutines></PublicRoutines>}
           ></Route>
-
+          <Route
+            path="/activities"
+            element={<Activities></Activities>}
+          ></Route>
           <Route path="/login" element={<Login></Login>} />
           <Route path="/register" element={<Register></Register>} />
           <Route

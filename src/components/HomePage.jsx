@@ -25,12 +25,13 @@ const HomePage = () => {
       <h2>{homeMessage}</h2>
       <div>
         <Link to="/routines">Routines</Link>
-        <Link to="/routines">Activities</Link>
+        <Link to="/activities">Activities</Link>
       </div>
       {isLoggedIn() ? (
         <>
           <div>
-          <Link to="/createRoutine">Add Routine</Link>
+          <Link to="/createRoutine">Create Routine</Link>
+          <Link to="createActivity">Create Activity</Link>
         <Link to="/profilePage">ProfilePage</Link>
           </div>
         </>

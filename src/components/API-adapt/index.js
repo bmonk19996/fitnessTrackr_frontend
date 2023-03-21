@@ -128,7 +128,6 @@ export const updateRoutine = async(token, routineId, fields ) =>
     throw e;
   }
 }
-//updateRoutine(token,126,{isPublic:true})
 export const deleteRoutine = async(token, routineId) =>
 {
   try {
@@ -168,7 +167,6 @@ export const addActivityToRoutine = async (token, fields)=>
     throw e;
   }
 }
-//addActivityToRoutine(token,126,98,54,102)
 export const getAllActivities = async () =>
 {
   try
