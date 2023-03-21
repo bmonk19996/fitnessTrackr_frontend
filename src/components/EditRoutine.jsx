@@ -13,7 +13,6 @@ const EditRoutine = (props) => {
 
 
   const setRoutine = async () => {
-    //use routineId to fill in name and goal and isPublic6
     const myUser = await getMyUser(localStorage.getItem("token"));
     const myRoutines = await getUserPublicRoutines(
       localStorage.getItem("token"),
