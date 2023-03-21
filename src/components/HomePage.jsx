@@ -30,8 +30,8 @@ const HomePage = () => {
       {isLoggedIn() ? (
         <>
           <div>
-          <Link to="/createRoutine">Create Routine</Link>
-          <Link to="createActivity">Create Activity</Link>
+          <Link to="/routines/createRoutine">Create Routine</Link>
+          <Link to="/activities/createActivity">Create Activity</Link>
         <Link to="/profilePage">ProfilePage</Link>
           </div>
         </>

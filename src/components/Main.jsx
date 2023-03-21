@@ -9,8 +9,9 @@ import {
   Navbar,
   EditRoutine,
   HomePage,
-  Activities
+  Activities,
 } from "./";
+import CreateActivity from "./CreateActivity";
 
 const Main = () => {
   return (
@@ -23,15 +24,16 @@ const Main = () => {
             path="/routines"
             element={<PublicRoutines></PublicRoutines>}
           ></Route>
-          <Route
-            path="/activities"
-            element={<Activities></Activities>}
-          ></Route>
+          <Route path="/activities" element={<Activities></Activities>}></Route>
           <Route path="/login" element={<Login></Login>} />
           <Route path="/register" element={<Register></Register>} />
           <Route
-            path="/createRoutine"
+            path="routines/createRoutine"
             element={<CreateRoutine></CreateRoutine>}
+          />
+                    <Route
+            path="activities/createActivity"
+            element={<CreateActivity></CreateActivity>}
           />
           <Route path="/ProfilePage" element={<ProfilePage></ProfilePage>} />
           <Route
