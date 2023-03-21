@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getMyUser, getUserPublicRoutines, updateRoutine } from "./API-adapt";
-import { useNavigate } from "react-router-dom";
 const EditRoutine = (props) => {
   const { routineId } = useParams();
   const [name, setRoutineName] = useState("");

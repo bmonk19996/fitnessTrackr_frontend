@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getMyUser } from "./API-adapt/index";
 import { Link } from "react-router-dom";
 import { ActivityCard } from "./";
@@ -21,8 +21,8 @@ const Routine = (props) => {
       <div>Name: {routine.name}</div>
       <div>Goal: {routine.goal}</div>
       {isOwner ? (
-        <Link to={`/edit/${routine.id}`}>
-          <button>edit</button>
+        <Link to={`/routines/edit/${routine.id}`}>
+          <button>edit routine</button>
         </Link>
       ) : null}
       <div>

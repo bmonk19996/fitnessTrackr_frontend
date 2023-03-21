@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import {
   Login,
@@ -10,6 +10,7 @@ import {
   EditRoutine,
   HomePage,
   Activities,
+  EditActivity
 } from "./";
 import CreateActivity from "./CreateActivity";
 
@@ -37,8 +38,12 @@ const Main = () => {
           />
           <Route path="/ProfilePage" element={<ProfilePage></ProfilePage>} />
           <Route
-            path="/edit/:routineId"
+            path="/routines/edit/:routineId"
             element={<EditRoutine></EditRoutine>}
+          />
+          <Route
+            path="/activities/edit/:activityId"
+            element={<EditActivity></EditActivity>}
           />
         </Routes>
       </div>

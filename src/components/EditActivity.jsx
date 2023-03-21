@@ -1,13 +1,13 @@
-import react, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import { updateActivity } from "./API-adapt/index";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import{ updateActivity, getAllActivities } from "./API-adapt/index";
 
 //creatorid, isPublic, name, goal
 
 const EditActivity = (props) => {
-  const [name, setName] = useState(null);
-  const [description, setDescription] = useState(null);
+  const { activityId } = useParams();
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -28,6 +28,38 @@ const EditActivity = (props) => {
     }
   };
 
+  const setActivity = async () => {
+    try {
+
+      const myActivities = await getAllActivities()
+
+      let myActivity = null;
+      for (let i = 0; i < myActivities.length; i++) {
+        if (myActivities[i].id == activityId) {
+          myActivity = myActivities[i];
+        }
+      }
+      if (myActivity === null) {
+        setMessage(`Activity ${activityId} not found`);
+        navigate("/");
+      }
+
+      setName(myActivity.name);
+      setDescription(myActivity.description);
+    } catch (e) {
+
+      throw e;
+
+    }
+  };
+
+  useEffect(() => {
+    setActivity();
+  }, []);
+
+
+console.log(name)
+
   return (
     <div>
       <form
@@ -37,6 +69,7 @@ const EditActivity = (props) => {
           Activity Name:
           <input
             type="text"
+            value={name}
             onChange={(event) => setName(event.target.value)}
           />
         </label>
@@ -44,6 +77,7 @@ const EditActivity = (props) => {
           Activity description:
           <input
             type="text"
+            value={description}
             onChange={(event) => setDescription(event.target.value)}
           />
         </label>
