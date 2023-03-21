@@ -11,3 +11,12 @@ body {
     max-height: 10%;
     min-height: 40px;
 }
+
+.RoutineCard{
+    border: solid;
+    margin:5px;
+}
+.activity{
+    border: dashed;
+    margin: 2px;
+}

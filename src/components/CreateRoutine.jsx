@@ -12,6 +12,7 @@ const CreateRoutine =(props)=>
     const [name, setRoutineName] = useState(null);
     const [goal, setRoutineGoal] = useState(null);
     const [isPublic, setIsPublic] = useState(false);
+    const [message, setMessage] = useState("");
     const navigate = useNavigate()
 
     const submitRoutine = async(event, fields)=>
@@ -25,7 +26,7 @@ const CreateRoutine =(props)=>
         navigate("/");
         window.location.reload();
     }else{
-        console.log(result.message);
+        setMessage(result.message);
     }
 
 }
@@ -47,6 +48,7 @@ const CreateRoutine =(props)=>
                 </label>
                 <button type="submit">Submit</button>
             </form>
+            {message.length ? <h3>{message}</h3> : null}
         </div>
     )
 }

@@ -16,7 +16,7 @@ const Routine = (props) =>
         checkIsOwner(routine.creatorId);
     })
     return(
-        <div id="RoutineCard">
+        <div className="RoutineCard">
             <h1>Routine</h1>
             <div>{routine.id}</div>
             <div>{routine.creatorName}</div>
@@ -32,7 +32,7 @@ const Routine = (props) =>
                 routine.activities.map((activity, idx)=>{
                     return (
                         
-                        <div id="activity" key={`activities: ${idx}`}>
+                        <div className="activity" key={`activities: ${idx}`}>
                         <div>{activity.name}</div>
                         <div>{activity.description}</div>
                         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {getMyUser, getRoutines, getUserPublicRoutines} from "./API-adapt/index"
+import {getMyUser, getUserPublicRoutines} from "./API-adapt/index"
 import {Routine} from "./";
 
 

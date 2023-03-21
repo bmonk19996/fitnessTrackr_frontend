@@ -15,6 +15,7 @@ const Register = () => {
     if (result.token) {
       localStorage.setItem("token", result.token);
       navigate("/");
+      window.location.reload();
     } else {
       setMessage(result.message);
     }
