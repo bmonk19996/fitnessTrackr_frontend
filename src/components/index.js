@@ -7,3 +7,4 @@ export { default as PublicRoutines } from "./PublicRoutines";
 export { default as Register } from "./Register";
 export { default as Routine } from "./Routine";
 export{ default as EditRoutine } from "./EditRoutine"
+export { default as HomePage } from "./HomePage"

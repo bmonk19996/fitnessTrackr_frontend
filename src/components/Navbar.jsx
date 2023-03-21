@@ -31,8 +31,6 @@ const Navbar = () => {
         >
           Logout
         </button>
-        <Link to="/createRoutine">Add Routine</Link>
-        <Link to="/profilePage">ProfilePage</Link>
         </>
       ) : (<>
 

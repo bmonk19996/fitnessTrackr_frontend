@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import {Login, PublicRoutines, Register, CreateRoutine, ProfilePage, Navbar, EditRoutine } from "./"
-
+import {
+  Login,
+  PublicRoutines,
+  Register,
+  CreateRoutine,
+  ProfilePage,
+  Navbar,
+  EditRoutine,
+  HomePage
+} from "./";
 
 const Main = () => {
   return (
@@ -9,9 +17,9 @@ const Main = () => {
       <Navbar />
       <div>
         <Routes>
+          <Route path="/" element={<HomePage></HomePage>}></Route>
           <Route
-            exact
-            path="/"
+            path="/routines"
             element={<PublicRoutines></PublicRoutines>}
           ></Route>
 
@@ -21,11 +29,8 @@ const Main = () => {
             path="/createRoutine"
             element={<CreateRoutine></CreateRoutine>}
           />
+          <Route path="/ProfilePage" element={<ProfilePage></ProfilePage>} />
           <Route
-            path="/ProfilePage"
-            element={<ProfilePage></ProfilePage>}
-          />
-                    <Route
             path="/edit/:routineId"
             element={<EditRoutine></EditRoutine>}
           />

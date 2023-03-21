@@ -1,37 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getMyUser, getUserPublicRoutines, updateRoutine } from "./API-adapt";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 const EditRoutine = (props) => {
   const { routineId } = useParams();
   const [name, setRoutineName] = useState("");
   const [goal, setRoutineGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate()
-
-
+  const navigate = useNavigate();
 
   const setRoutine = async () => {
-    const myUser = await getMyUser(localStorage.getItem("token"));
-    const myRoutines = await getUserPublicRoutines(
-      localStorage.getItem("token"),
-      myUser.username
-    );
-    let myRoutine = null;
-    for (let i = 0; i < myRoutines.length; i++) {
-      if (myRoutines[i].id == routineId) {
-        myRoutine = myRoutines[i];
+    try {
+      const myUser = await getMyUser(localStorage.getItem("token"));
+      const myRoutines = await getUserPublicRoutines(
+        localStorage.getItem("token"),
+        myUser.username
+      );
+      let myRoutine = null;
+      for (let i = 0; i < myRoutines.length; i++) {
+        if (myRoutines[i].id == routineId) {
+          myRoutine = myRoutines[i];
+        }
       }
-    }
-    if (myRoutine === null) {
-      setMessage(`Routine ${routineId} not found for current user`);
-      navigate("/");
-    }
+      if (myRoutine === null) {
+        setMessage(`Routine ${routineId} not found for current user`);
+        navigate("/");
+      }
 
-    setIsPublic(myRoutine.isPublic);
-    setRoutineName(myRoutine.name);
-    setRoutineGoal(myRoutine.goal)
+      setIsPublic(myRoutine.isPublic);
+      setRoutineName(myRoutine.name);
+      setRoutineGoal(myRoutine.goal);
+    } catch (e) {
+      throw e;
+    }
   };
 
   useEffect(() => {
