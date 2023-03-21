@@ -1,11 +1,11 @@
 import react, { useState, useEffect } from "react";
 import { getMyUser } from "./API-adapt/index";
 import { Link } from "react-router-dom";
+import {ActivityCard} from "./";
 const Routine = (props) => {
   const [isOwner, setIsOwner] = useState(false);
 
   const routine = props.routine;
-
   async function checkIsOwner(creatorId) {
     const user = await getMyUser(localStorage.getItem("token"));
     setIsOwner(user.id === creatorId);
