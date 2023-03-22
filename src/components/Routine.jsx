@@ -41,7 +41,6 @@ const Routine = (props) => {
       const allActivities = await getAllActivities();
       console.log("here");
       for (let i = 0; i < allActivities.length; i++) {
-        console.log(activityName);
         if (allActivities[i].name === activityName) {
           console.log("hello");
           const result = await addActivityToRoutine(
@@ -49,7 +48,10 @@ const Routine = (props) => {
             { routineId: routine.id, activityId: allActivities[i].id }
           );
           if (result.id) {
-            window.location.reload();
+            const newActivities = [...activities];
+            newActivities.push(allActivities[i])
+            console.log(newActivities)
+            setActivities(newActivities);
           }
         }
       }
