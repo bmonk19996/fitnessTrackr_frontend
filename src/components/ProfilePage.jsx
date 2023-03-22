@@ -31,6 +31,8 @@ console.log(user)
                      return <Routine
                      key={'routineidx: '+idx}
                      routine={routine}
+                     routines={routines}
+                     setRoutines={setRoutines}
                      editRoutineActivity={true}
                      ></Routine>
                  })

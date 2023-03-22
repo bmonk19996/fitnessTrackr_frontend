@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { getMyUser, getAllActivities, addActivityToRoutine } from "./API-adapt/index";
+import { getMyUser, getAllActivities, addActivityToRoutine, deleteRoutine } from "./API-adapt/index";
 import { Link} from "react-router-dom";
 import { ActivityCard } from "./";
 
 
 const Routine = (props) => {
+  const {routine,routines, setRoutines, idx} = props
   const editRoutineActivity= props.editRoutineActivity;
   const [isOwner, setIsOwner] = useState(false);
   const [addActivityInput, setAddActivityInput] = useState("");
-
-  const routine = props.routine;
-  const idx = props.idx;
+  const [activities, setActivities] = useState(routine.activities)
 
   async function checkIsOwner(creatorId) {
     const user = await getMyUser(localStorage.getItem("token"));
@@ -57,6 +56,22 @@ const Routine = (props) => {
     }
   }  
 
+const deleteMyRoutine = async()=>{
+
+  const result = await deleteRoutine(localStorage.getItem("token"), routine.id)
+  if(!result.message){
+    console.log('hit',routines)
+    const newRoutines = [...routines]
+    newRoutines.splice(idx,1);
+    setRoutines(newRoutines)
+  }else{
+
+  }
+
+}
+
+
+
   return (
     <div className="RoutineCard">
       <h1>Routine</h1>
@@ -69,6 +84,7 @@ const Routine = (props) => {
         <Link to={`/routines/edit/${routine.id}`}>
           <button>edit routine</button>
         </Link>
+          <button onClick={()=>{deleteMyRoutine()}}>delete routine</button>
           <button onClick={()=>showAddActivityList(addActivityInput)}>Add Activity</button>
           <input id={`${"addActivity"+idx}`} className="hidden" type="text" name="activity" list={`activityList${idx}`} onChange={(event)=>
           {
@@ -81,7 +97,7 @@ const Routine = (props) => {
         <h2>Activities: </h2>
       </div>
       <div>
-        {routine.activities.map((activity, idx) => {
+        {activities.map((activity, idx) => {
           return (
             <ActivityCard
               key={"routine activity idx: " + idx}
