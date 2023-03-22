@@ -130,6 +130,7 @@ export const deleteRoutine = async (token, routineId) => {
 };
 //fields is count, duration, routineId, activityId
 export const addActivityToRoutine = async (token, fields) => {
+  const {routineId} = fields;
   try {
     const response = await fetch(
       `${BASE_URL}/routines/${routineId}/activities`,
