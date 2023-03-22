@@ -14,7 +14,7 @@ const EditActivity = (props) => {
   const submitActivity = async (event, fields) => {
     try {
       event.preventDefault();
-      const result = await updateActivity(localStorage.getItem("token"), {
+      const result = await updateActivity(localStorage.getItem("token"), activityId,{
         ...fields,
       });
       console.log(result);
