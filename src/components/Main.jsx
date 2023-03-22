@@ -15,6 +15,9 @@ import {
 import CreateActivity from "./CreateActivity";
 
 const Main = () => {
+const [token, setToken] = useState(localStorage.getItem("token"))
+
+
   return (
     <div id="main">
       <Navbar />
@@ -26,8 +29,8 @@ const Main = () => {
             element={<PublicRoutines></PublicRoutines>}
           ></Route>
           <Route path="/activities" element={<Activities></Activities>}></Route>
-          <Route path="/login" element={<Login></Login>} />
-          <Route path="/register" element={<Register></Register>} />
+          <Route path="/login" element={<Login setToken={setToken}></Login>} />
+          <Route path="/register" element={<Register setToken={setToken}></Register>} />
           <Route
             path="routines/createRoutine"
             element={<CreateRoutine></CreateRoutine>}
