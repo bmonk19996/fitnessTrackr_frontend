@@ -5,6 +5,7 @@ import {Routine} from "./";
 
 const ProfilePage = (props)=>
 {
+    const token = props.token
    const [user, setUser] = useState({})
    const [routines, setRoutines] = useState([])
 
@@ -13,8 +14,8 @@ const ProfilePage = (props)=>
    },[])
 
    const setUserInfo = async()=>{
-    const myUser = await getMyUser(localStorage.getItem("token"))
-    const myRoutines = await getUserPublicRoutines(localStorage.getItem("token"), myUser.username)
+    const myUser = await getMyUser(token)
+    const myRoutines = await getUserPublicRoutines(token, myUser.username)
 
     setUser(myUser);
     setRoutines(myRoutines)
@@ -30,6 +31,7 @@ console.log(user)
                  {
                      return <Routine
                      key={'routineidx: '+idx}
+                     token={token}
                      routine={routine}
                      ></Routine>
                  })

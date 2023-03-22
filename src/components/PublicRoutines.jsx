@@ -5,6 +5,7 @@ import {Routine} from "./";
 
 const PublicRoutines = (props)=>
 {
+    const token = props.token
     const [routines, setRoutines] = useState([]);
 
 
@@ -33,6 +34,7 @@ const PublicRoutines = (props)=>
                 {
                     return <Routine
                     key={'routine idx: '+idx}
+                    token={token}
                     routine={routine}
                     ></Routine>
                 })

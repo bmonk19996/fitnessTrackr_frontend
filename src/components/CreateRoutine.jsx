@@ -6,6 +6,7 @@ import { getMyUser, makeRoutine } from "./API-adapt/index";
 //creatorid, isPublic, name, goal
 
 const CreateRoutine = (props) => {
+  const token= props.token
   const [name, setRoutineName] = useState(null);
   const [goal, setRoutineGoal] = useState(null);
   const [isPublic, setIsPublic] = useState(false);
@@ -15,8 +16,8 @@ const CreateRoutine = (props) => {
   const submitRoutine = async (event, fields) => {
     try {
       event.preventDefault();
-      const { id } = await getMyUser(localStorage.getItem("token"));
-      const result = await makeRoutine(localStorage.getItem("token"), {
+      const { id } = await getMyUser(token);
+      const result = await makeRoutine(token, {
         id,
         ...fields,
       });
