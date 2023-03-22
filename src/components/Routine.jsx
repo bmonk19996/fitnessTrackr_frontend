@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getMyUser, getAllActivities, addActivityToRoutine } from "./API-adapt/index";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { ActivityCard } from "./";
 
 
@@ -49,7 +49,10 @@ const Routine = (props) => {
         {
           console.log("hello")
           const result = await addActivityToRoutine(localStorage.getItem("token"), {routineId:routine.id, activityId:allActivities[i].id});
-          console.log("ADD ACTIVITY: ", result);
+          if(result.id)
+          {
+            window.location.reload();
+          }
         }
       }
     }
