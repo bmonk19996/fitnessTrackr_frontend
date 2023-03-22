@@ -34,6 +34,8 @@ const Activities = (props)=>
                     return <ActivityCard
                     key={'activity idx: '+idx}
                     activity={activity}
+                    activities={activities}
+                    setActivities={setActivities}
                     showEdit={true}
                     ></ActivityCard>
                 })
