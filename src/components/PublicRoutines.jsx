@@ -34,6 +34,7 @@ const PublicRoutines = (props)=>
                     return <Routine
                     key={'routine idx: '+idx}
                     routine={routine}
+                    editRoutineActivity={false}
                     idx={idx}
                     ></Routine>
                 })

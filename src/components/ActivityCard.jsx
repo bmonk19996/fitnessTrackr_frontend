@@ -8,8 +8,10 @@ function isLoggedIn() {
 }
 
 const ActivityCard = (props) => {
+  const editRoutineActivity = props.editRoutineActivity;
   const activity = props.activity;
   const showEdit = props.showEdit;
+
   return (
     <div className="ActivityCard">
       <div>Name:{activity.name}</div>
@@ -21,6 +23,7 @@ const ActivityCard = (props) => {
           <button>edit Activity</button>
         </Link>
       ) : null}
+      {editRoutineActivity ? <Link to={`/routineActivities/edit/${activity.routineActivityId}`}><button>edit RoutineActivity</button></Link> : null}
     </div>
   );
 };

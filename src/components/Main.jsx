@@ -13,6 +13,7 @@ import {
   EditActivity,
 } from "./";
 import CreateActivity from "./CreateActivity";
+import EditRoutineActivity from "./EditRoutineActivity";
 
 const Main = () => {
   return (
@@ -44,6 +45,10 @@ const Main = () => {
           <Route
             path="/activities/edit/:activityId"
             element={<EditActivity></EditActivity>}
+          />
+                    <Route
+            path="/routineActivities/edit/:routineActivityId"
+            element={<EditRoutineActivity></EditRoutineActivity>}
           />
         </Routes>
       </div>

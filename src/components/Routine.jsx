@@ -5,13 +5,12 @@ import { ActivityCard } from "./";
 
 
 const Routine = (props) => {
+  const editRoutineActivity= props.editRoutineActivity;
   const [isOwner, setIsOwner] = useState(false);
   const [addActivityInput, setAddActivityInput] = useState("");
 
   const routine = props.routine;
   const idx = props.idx;
-  
-  
 
   async function checkIsOwner(creatorId) {
     const user = await getMyUser(localStorage.getItem("token"));
@@ -56,7 +55,7 @@ const Routine = (props) => {
         }
       }
     }
-  }
+  }  
 
   return (
     <div className="RoutineCard">
@@ -88,6 +87,7 @@ const Routine = (props) => {
               key={"routine activity idx: " + idx}
               activity={activity}
               showEdit={false}
+              editRoutineActivity={editRoutineActivity}
             ></ActivityCard>
           );
         })}
