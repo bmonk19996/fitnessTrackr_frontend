@@ -21,6 +21,7 @@ const EditRoutineActivity = (props) => {
     );
     console.log(result)
     if (!result.message) {
+        navigate('/profilePage')
     } else {
       setMessage(result.message);
     }
