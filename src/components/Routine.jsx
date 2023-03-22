@@ -34,6 +34,7 @@ const Routine = (props) => {
             <ActivityCard
               key={"routine activity idx: " + idx}
               activity={activity}
+              showEdit={false}
             ></ActivityCard>
           );
         })}

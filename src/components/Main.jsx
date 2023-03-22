@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import {
   Login,
@@ -10,7 +10,7 @@ import {
   EditRoutine,
   HomePage,
   Activities,
-  EditActivity
+  EditActivity,
 } from "./";
 import CreateActivity from "./CreateActivity";
 
@@ -32,7 +32,7 @@ const Main = () => {
             path="routines/createRoutine"
             element={<CreateRoutine></CreateRoutine>}
           />
-                    <Route
+          <Route
             path="activities/createActivity"
             element={<CreateActivity></CreateActivity>}
           />
