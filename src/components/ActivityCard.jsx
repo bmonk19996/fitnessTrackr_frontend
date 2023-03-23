@@ -38,9 +38,9 @@ const deleteMyRoutineActivity = async()=>{
       {editRoutineActivity ? (
         <>
         <Link to={`/routineActivities/edit/${activity.routineActivityId}`}>
-          <button>edit RoutineActivity</button>
+          <button>edit activity time and count</button>
         </Link>
-        <button onClick={()=>deleteMyRoutineActivity()}>delete RoutineActivity</button>
+        <button onClick={()=>deleteMyRoutineActivity()}>remove activity</button>
         </>
       ) : null}
     </div>
