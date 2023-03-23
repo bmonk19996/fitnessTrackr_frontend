@@ -4,24 +4,23 @@ import {
   getAllActivities,
   addActivityToRoutine,
   deleteRoutine,
-  getUserPublicRoutines
+  getUserPublicRoutines,
 } from "./API-adapt/index";
 import { Link } from "react-router-dom";
 import { ActivityCard } from "./";
 
 const Routine = (props) => {
-  const { routine, routines, setRoutines, idx } = props;
-  const editRoutineActivity = props.editRoutineActivity;
+  const { token, routine, routines, setRoutines, idx, edit } = props;
   const [isOwner, setIsOwner] = useState(false);
-  const [username,setUsername] = useState('')
+  const [username, setUsername] = useState("");
   const [addActivityInput, setAddActivityInput] = useState("");
   const [activities, setActivities] = useState(routine.activities);
 
   async function checkIsOwner(creatorId) {
     const user = await getMyUser(localStorage.getItem("token"));
-    if(user.id === creatorId){
-      setIsOwner(true)
-      setUsername(user.username)
+    if (user.id === creatorId) {
+      setIsOwner(true);
+      setUsername(user.username);
     }
   }
   useEffect(() => {
@@ -43,16 +42,12 @@ const Routine = (props) => {
       const allActivities = await getAllActivities();
       for (let i = 0; i < allActivities.length; i++) {
         if (allActivities[i].name === activityName) {
-          const result = await addActivityToRoutine(
-            localStorage.getItem("token"),
-            { routineId: routine.id, activityId: allActivities[i].id }
-          );
+          const result = await addActivityToRoutine(token, {
+            routineId: routine.id,
+            activityId: allActivities[i].id,
+          });
           if (!result.message) {
-            console.log('hiting')
-            const myRoutines = await getUserPublicRoutines(localStorage.getItem("token"), username)
-            // const newActivities = [...activities];
-            // newActivities.push(allActivities[i]);
-            console.log(myRoutines)
+            const myRoutines = await getUserPublicRoutines(token, username);
             setActivities(myRoutines[idx].activities);
           }
         }
@@ -61,10 +56,7 @@ const Routine = (props) => {
   };
 
   const deleteMyRoutine = async () => {
-    const result = await deleteRoutine(
-      localStorage.getItem("token"),
-      routine.id
-    );
+    const result = await deleteRoutine(token, routine.id);
     if (!result.message) {
       const newRoutines = [...routines];
       newRoutines.splice(idx, 1);
@@ -80,7 +72,7 @@ const Routine = (props) => {
       <div>Creator: {routine.creatorName}</div>
       <div>Name: {routine.name}</div>
       <div>Goal: {routine.goal}</div>
-      {isOwner ? (
+      {isOwner && edit ? (
         <>
           <Link to={`/routines/edit/${routine.id}`}>
             <button>edit routine</button>
@@ -96,10 +88,13 @@ const Routine = (props) => {
             Add Activity
           </button>
 
-          <select id={`${"activityList" + idx}`} className="hidden"
-          onChange={()=>{setAddActivityInput(event.target.value)}}>
-            
-          </select>
+          <select
+            id={`${"activityList" + idx}`}
+            className="hidden"
+            onChange={() => {
+              setAddActivityInput(event.target.value);
+            }}
+          ></select>
         </>
       ) : null}
       <div>
@@ -115,7 +110,7 @@ const Routine = (props) => {
               setActivities={setActivities}
               idx={idx}
               showEdit={false}
-              editRoutineActivity={editRoutineActivity}
+              edit={edit}
             ></ActivityCard>
           );
         })}
@@ -125,8 +120,6 @@ const Routine = (props) => {
 };
 
 export default Routine;
-
-
 
 // <input
 //               id={`${"addActivity" + idx}`}

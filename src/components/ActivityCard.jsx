@@ -3,24 +3,28 @@ import React from "react";
 import { deleteRoutineActivity } from "./API-adapt";
 
 const ActivityCard = (props) => {
+  const {
+    token,
+    editRoutineActivity,
+    activity,
+    showEdit,
+    idx,
+    activities,
+    setActivities,
+  } = props;
 
-
-  const { token, editRoutineActivity,activity, showEdit, routineActivityId,idx, activities, setActivities} = props
-
-const deleteMyRoutineActivity = async()=>{
-  console.log(activity.routineActivityId)
-  const result = await deleteRoutineActivity(
-    localStorage.getItem("token"),
-    activity.routineActivityId
-  );
-  if (!result.message) {
-    console.log(activities)
-     const newActivities = [...activities];
-     newActivities.splice(idx, 1);
-     setActivities(newActivities);
-  } else {
-  }
-}
+  const deleteMyRoutineActivity = async () => {
+    const result = await deleteRoutineActivity(
+      token,
+      activity.routineActivityId
+    );
+    if (!result.message) {
+      const newActivities = [...activities];
+      newActivities.splice(idx, 1);
+      setActivities(newActivities);
+    } else {
+    }
+  };
   return (
     <div className="ActivityCard">
       <div>Name:{activity.name}</div>
@@ -37,10 +41,12 @@ const deleteMyRoutineActivity = async()=>{
       ) : null}
       {editRoutineActivity ? (
         <>
-        <Link to={`/routineActivities/edit/${activity.routineActivityId}`}>
-          <button>edit activity time and count</button>
-        </Link>
-        <button onClick={()=>deleteMyRoutineActivity()}>remove activity</button>
+          <Link to={`/routineActivities/edit/${activity.routineActivityId}`}>
+            <button>edit activity time and count</button>
+          </Link>
+          <button onClick={() => deleteMyRoutineActivity()}>
+            remove activity
+          </button>
         </>
       ) : null}
     </div>

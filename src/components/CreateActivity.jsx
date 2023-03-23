@@ -6,7 +6,7 @@ import { makeActivity } from "./API-adapt/index";
 //creatorid, isPublic, name, goal
 
 const CreateActivity = (props) => {
-  const token = props.token
+  const token = props.token;
   const [name, setName] = useState(null);
   const [description, setDescription] = useState(null);
   const [message, setMessage] = useState("");
@@ -18,7 +18,6 @@ const CreateActivity = (props) => {
       const result = await makeActivity(token, {
         ...fields,
       });
-      console.log(result);
       if (!result.message) {
         navigate("/");
       } else {
@@ -31,9 +30,7 @@ const CreateActivity = (props) => {
 
   return (
     <div>
-      <form
-        onSubmit={(event) => submitActivity(event, { name, description })}
-      >
+      <form onSubmit={(event) => submitActivity(event, { name, description })}>
         <label>
           Activity Name:
           <input

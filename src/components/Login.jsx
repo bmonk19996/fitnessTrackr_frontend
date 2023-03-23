@@ -13,7 +13,7 @@ const Login = (props) => {
     event.preventDefault();
     const result = await login(username, password);
     if (result.token) {
-      setToken(result.token)
+      setToken(result.token);
       localStorage.setItem("token", result.token);
       navigate("/");
     } else {
@@ -47,5 +47,3 @@ const Login = (props) => {
 };
 
 export default Login;
-
-

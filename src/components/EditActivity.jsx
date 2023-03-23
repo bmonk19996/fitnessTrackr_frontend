@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import{ updateActivity, getAllActivities } from "./API-adapt/index";
+import { updateActivity, getAllActivities } from "./API-adapt/index";
 
 //creatorid, isPublic, name, goal
 
 const EditActivity = (props) => {
-  const token = props.token
+  const token = props.token;
   const { activityId } = useParams();
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -16,12 +16,11 @@ const EditActivity = (props) => {
     try {
       event.preventDefault();
 
-      const result = await updateActivity(token, activityId,{
+      const result = await updateActivity(token, activityId, {
         ...fields,
       });
-      console.log(result);
       if (!result.message) {
-        navigate("/");
+        navigate("/activities");
       } else {
         setMessage(result.message);
       }
@@ -32,8 +31,7 @@ const EditActivity = (props) => {
 
   const setActivity = async () => {
     try {
-
-      const myActivities = await getAllActivities()
+      const myActivities = await getAllActivities();
 
       let myActivity = null;
       for (let i = 0; i < myActivities.length; i++) {
@@ -49,9 +47,7 @@ const EditActivity = (props) => {
       setName(myActivity.name);
       setDescription(myActivity.description);
     } catch (e) {
-
       throw e;
-
     }
   };
 
@@ -59,14 +55,11 @@ const EditActivity = (props) => {
     setActivity();
   }, []);
 
-
-console.log(name)
+  console.log(name);
 
   return (
     <div>
-      <form
-        onSubmit={(event) => submitActivity(event, { name, description })}
-      >
+      <form onSubmit={(event) => submitActivity(event, { name, description })}>
         <label>
           Activity Name:
           <input

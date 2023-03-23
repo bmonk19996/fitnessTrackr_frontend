@@ -2,24 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getMyUser, getUserPublicRoutines, updateRoutine } from "./API-adapt";
 const EditRoutine = (props) => {
-  const token = props.token
+  const token = props.token;
   const { routineId } = useParams();
   const [name, setRoutineName] = useState("");
   const [goal, setRoutineGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false);
   const [message, setMessage] = useState("");
-  const [routineActivities, seRoutineActivities] = useState([])
-
+  const [routineActivities, seRoutineActivities] = useState([]);
 
   const navigate = useNavigate();
 
   const setRoutine = async () => {
     try {
       const myUser = await getMyUser(token);
-      const myRoutines = await getUserPublicRoutines(
-        localStorage.token,
-        myUser.username
-      );
+      const myRoutines = await getUserPublicRoutines(token, myUser.username);
       let myRoutine = null;
       for (let i = 0; i < myRoutines.length; i++) {
         if (myRoutines[i].id == routineId) {
@@ -28,7 +24,7 @@ const EditRoutine = (props) => {
       }
       if (myRoutine === null) {
         setMessage(`Routine ${routineId} not found for current user`);
-        navigate("/");
+        navigate("/profilePage");
       }
 
       setIsPublic(myRoutine.isPublic);
@@ -39,21 +35,15 @@ const EditRoutine = (props) => {
     }
   };
 
-
-
   useEffect(() => {
     setRoutine();
   }, []);
 
   const updateMyRoutine = async (event, fields) => {
     event.preventDefault();
-    console.log("updating routine");
-    const result = updateRoutine(
-      token,
-      routineId,
-      fields
-    );
+    const result = await updateRoutine(token, routineId, fields);
     if (!result.message) {
+      navigate("/profilePage");
     } else {
       setMessage(result.message);
     }

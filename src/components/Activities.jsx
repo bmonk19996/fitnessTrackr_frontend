@@ -5,7 +5,6 @@ import { ActivityCard } from "./";
 
 const Activities = (props) => {
   const token = props.token;
-  console.log(token)
   const [activities, setActivities] = useState([]);
 
   const pullActivities = async () => {
@@ -26,7 +25,7 @@ const Activities = (props) => {
       {activities.map((activity, idx) => {
         return (
           <ActivityCard
-          token={token}
+            token={token}
             key={"activity idx: " + idx}
             activity={activity}
             showEdit={true}
@@ -36,6 +35,5 @@ const Activities = (props) => {
     </div>
   );
 };
-
 
 export default Activities;

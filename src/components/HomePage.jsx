@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getMyUser } from "./API-adapt";
 
-
 const HomePage = (props) => {
-  const token = props.token
+  const token = props.token;
   const [homeMessage, setHomeMessage] = useState("Welcome to Fitness Tracker");
   useEffect(() => {
     checkLogIn();
@@ -26,9 +25,9 @@ const HomePage = (props) => {
       {token ? (
         <>
           <div>
-          <Link to="/routines/createRoutine">Create Routine</Link>
-          <Link to="/activities/createActivity">Create Activity</Link>
-        <Link to="/profilePage">ProfilePage</Link>
+            <Link to="/routines/createRoutine">Create Routine</Link>
+            <Link to="/activities/createActivity">Create Activity</Link>
+            <Link to="/profilePage">ProfilePage</Link>
           </div>
         </>
       ) : null}

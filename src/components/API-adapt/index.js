@@ -73,7 +73,7 @@ export const getRoutines = async () => {
       headers: makeHeaders(),
     });
     const result = await response.json();
-    console.log(result);
+
     return result;
   } catch (error) {
     throw error;
@@ -105,7 +105,6 @@ export const updateRoutine = async (token, routineId, fields) => {
       }),
     });
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (e) {
     throw e;
@@ -122,7 +121,6 @@ export const deleteRoutine = async (token, routineId) => {
       }),
     });
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (e) {
     throw e;
@@ -130,7 +128,7 @@ export const deleteRoutine = async (token, routineId) => {
 };
 //fields is count, duration, routineId, activityId
 export const addActivityToRoutine = async (token, fields) => {
-  const {routineId} = fields;
+  const { routineId } = fields;
   try {
     const response = await fetch(
       `${BASE_URL}/routines/${routineId}/activities`,
@@ -143,7 +141,6 @@ export const addActivityToRoutine = async (token, fields) => {
       }
     );
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (e) {
     throw e;
@@ -157,7 +154,6 @@ export const getAllActivities = async () => {
       headers: makeHeaders(),
     });
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (e) {
     throw e;
@@ -173,7 +169,6 @@ export const getRoutinesByActivity = async (activityId) => {
       }
     );
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (e) {
     throw e;
@@ -197,7 +192,6 @@ export const updateRoutineActivities = async (
       }
     );
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (e) {
     throw e;
@@ -214,7 +208,6 @@ export const deleteRoutineActivity = async (token, RoutineActivityId) => {
       }
     );
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (e) {
     throw e;
@@ -237,7 +230,7 @@ export const makeActivity = async (token, fields) => {
   }
 };
 
-export const updateActivity = async (token,activityId,fields) => {
+export const updateActivity = async (token, activityId, fields) => {
   try {
     const response = await fetch(`${BASE_URL}/activities/${activityId}`, {
       method: "PATCH",
@@ -247,7 +240,6 @@ export const updateActivity = async (token,activityId,fields) => {
       }),
     });
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (e) {
     throw e;

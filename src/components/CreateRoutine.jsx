@@ -6,7 +6,7 @@ import { getMyUser, makeRoutine } from "./API-adapt/index";
 //creatorid, isPublic, name, goal
 
 const CreateRoutine = (props) => {
-  const token= props.token
+  const token = props.token;
   const [name, setRoutineName] = useState(null);
   const [goal, setRoutineGoal] = useState(null);
   const [isPublic, setIsPublic] = useState(false);
@@ -21,7 +21,6 @@ const CreateRoutine = (props) => {
         id,
         ...fields,
       });
-      console.log(result);
       if (!result.message) {
         navigate("/");
       } else {

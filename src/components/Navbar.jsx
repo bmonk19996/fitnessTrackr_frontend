@@ -2,12 +2,12 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
-  const token = props.token
+  const token = props.token;
   const navigate = useNavigate();
 
   function logOut() {
     localStorage.removeItem("token");
-    navigate('./')
+    navigate("./");
   }
 
   return (
@@ -17,20 +17,20 @@ const Navbar = (props) => {
       </Link>
       {token ? (
         <>
-        <button
-          className="nav-items"
-          onClick={() => {
-            logOut();
-            window.location.reload();
-          }}
-        >
-          Logout
-        </button>
+          <button
+            className="nav-items"
+            onClick={() => {
+              logOut();
+              window.location.reload();
+            }}
+          >
+            Logout
+          </button>
         </>
-      ) : (<>
-
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </>
       )}
     </div>

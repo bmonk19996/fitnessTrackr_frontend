@@ -12,9 +12,8 @@ const Register = (props) => {
   const submitLogin = async (event) => {
     event.preventDefault();
     const result = await register(username, password);
-    console.log(result);
     if (result.token) {
-      setToken(result.token)
+      setToken(result.token);
       localStorage.setItem("token", result.token);
       navigate("/");
     } else {
