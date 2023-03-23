@@ -29,7 +29,7 @@ const CreateActivity = (props) => {
   };
 
   return (
-    <div>
+    <div id="createActivity">
       <form onSubmit={(event) => submitActivity(event, { name, description })}>
         <label>
           Activity Name:

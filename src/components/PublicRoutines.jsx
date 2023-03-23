@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getRoutines } from "./API-adapt/index";
-
+import { Link } from "react-router-dom";
 import { Routine } from "./";
 
 const PublicRoutines = (props) => {
@@ -23,6 +23,7 @@ const PublicRoutines = (props) => {
   return (
     <div id="publicRoutinePage">
       <h1>Routines</h1>
+      <Link className="link create" to="/routines/createRoutine">Create New Routine</Link>
       {routines.map((routine, idx) => {
         return (
           <Routine

@@ -20,7 +20,7 @@ const Main = () => {
 
   return (
     <div id="main">
-      <Navbar token={token} />
+      <Navbar token={token} setToken={setToken} />
       <div>
         <Routes>
           <Route path="/" element={<HomePage token={token}></HomePage>}></Route>

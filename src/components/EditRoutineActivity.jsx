@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { updateRoutineActivities } from "./API-adapt";
+
 const EditRoutineActivity = (props) => {
-  token = props.token;
+  const token = props.token;
   const { routineActivityId } = useParams();
   const [duration, setDuration] = useState(0);
   const [count, setCount] = useState(0);

@@ -1,27 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:ital,wght@0,200;0,300;0,500;1,600&display=swap");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+
+
+/*
+new colors: 
+periwinkle: #A7ABDD
+green: #19535F
+lavender: #FCEDEE
+plum: #42103D
+blue: #020887
+dark blue: 090446
+*/
 body {
     margin: 0;
+    background-color: #a7abdd;
 }
-
 #navbar {
-    background-color: black;
-    color: white;
     display: flex;
-    align-items: center;
-    flex-grow: 1;
-    max-height: 10%;
-    min-height: 40px;
-}
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items:center;
+    justify-content: space-between;
+    background-color: #020887;
+    color: #fcedee;
+    padding: 15px;
+    font-family: "Gloock", serif;
+  }
+
+  button {
+    margin: auto;
+    display: flex;
+    align-items:center;
+    text-align: center;
+    background-color: #fcedee;
+    color: #020887;
+    border: none;
+    height: 50px;
+    width: 65px;
+    font-family: "Gloock", serif;
+    border-radius: 35px;
+    margin-right: 10px;
+    padding: 10px;
+  }
 
 .hidden
 {
     display:none;
 } 
 
-.RoutineCard{
-    border: solid;
-    margin:5px;
+
+
+.link{
+    color: #fcedee;
+    text-decoration: none;
 }
+.tabs{
+    display:flex;
+    font-size:larger;
+    background-color: #020887;
+
+}
+.tab{
+    padding: 5px;
+    background-color: #a7abdd;
+    color:#42103D;
+    border-top-right-radius:20px;
+    border-top-left-radius: 20px;
+}
+.create{
+    margin: 20px;
+    background-color: #fcedee;
+    color: #020887;
+    border: none;
+    height: 50px;
+    width: 65px;
+    font-family: "Gloock", serif;
+    border-radius: 35px;
+    padding: 10px;
+}
+.RoutineCard{
+    background-color: #FCEDEE;
+    color:#42103D;
+    margin:25px;
+    padding:20px;
+    border-radius: 35px;
+    display:flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}
+
 .ActivityCard{
-    border: dashed;
-    margin: 2px;
+    background-color: #020887;
+    color:#A7ABDD;
+    border-radius: 35px;
+    padding:20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

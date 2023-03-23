@@ -55,8 +55,6 @@ const EditActivity = (props) => {
     setActivity();
   }, []);
 
-  console.log(name);
-
   return (
     <div>
       <form onSubmit={(event) => submitActivity(event, { name, description })}>

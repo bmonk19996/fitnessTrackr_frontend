@@ -18,6 +18,7 @@ const ActivityCard = (props) => {
       token,
       activity.routineActivityId
     );
+    console.log(token)
     if (!result.message) {
       const newActivities = [...activities];
       newActivities.splice(idx, 1);
@@ -27,27 +28,31 @@ const ActivityCard = (props) => {
   };
   return (
     <div className="ActivityCard">
-      <div>Name:{activity.name}</div>
-      <div>Description: {activity.description}</div>
-      {activity.count ? <div>Count: {activity.count}</div> : null}
-      {activity.duration ? <div>Duration: {activity.duration}</div> : null}
-
+      <div className="activityCardInfo">
+        <h3>{activity.name}</h3>
+        <h4>{activity.description}</h4>
+        {activity.count ? <div>Count: {activity.count}</div> : null}
+        {activity.duration ? <div>Duration: {activity.duration}</div> : null}
+      </div>
       {token && showEdit ? (
         <>
-          <Link to={`/activities/edit/${activity.id}`}>
+          <Link className="link" to={`/activities/edit/${activity.id}`}>
             <button>edit Activity</button>
           </Link>
         </>
       ) : null}
       {editRoutineActivity ? (
-        <>
-          <Link to={`/routineActivities/edit/${activity.routineActivityId}`}>
-            <button>edit activity time and count</button>
+        <div className="activityCardButtons">
+          <Link
+            className="link"
+            to={`/routineActivities/edit/${activity.routineActivityId}`}
+          >
+            <button>edit activity</button>
           </Link>
           <button onClick={() => deleteMyRoutineActivity()}>
             remove activity
           </button>
-        </>
+        </div>
       ) : null}
     </div>
   );

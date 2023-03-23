@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllActivities } from "./API-adapt/index";
-
+import { Link } from "react-router-dom";
 import { ActivityCard } from "./";
 
 const Activities = (props) => {
@@ -22,6 +22,7 @@ const Activities = (props) => {
   return (
     <div id="ActivitiesPage">
       <h1>Activities</h1>
+      <Link className="link create" to="/activities/createActivity">Create New Activity</Link>
       {activities.map((activity, idx) => {
         return (
           <ActivityCard

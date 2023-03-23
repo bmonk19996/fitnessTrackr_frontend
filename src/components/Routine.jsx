@@ -67,14 +67,12 @@ const Routine = (props) => {
 
   return (
     <div className="RoutineCard">
-      <h1>Routine</h1>
-      <div>Id: {routine.id}</div>
-      <div>Creator: {routine.creatorName}</div>
-      <div>Name: {routine.name}</div>
+      <h1>{routine.name}</h1>
+      <div>Created By: {routine.creatorName}</div>
       <div>Goal: {routine.goal}</div>
       {isOwner && edit ? (
         <>
-          <Link to={`/routines/edit/${routine.id}`}>
+          <Link className="link" to={`/routines/edit/${routine.id}`}>
             <button>edit routine</button>
           </Link>
           <button
@@ -100,21 +98,23 @@ const Routine = (props) => {
       <div>
         <h2>Activities: </h2>
       </div>
-      <div>
-        {activities.map((activity, idx) => {
+      <ol>
+        {activities.map((activity, index) => {
           return (
-            <ActivityCard
-              key={"routine activity idx: " + idx}
-              activity={activity}
-              activities={activities}
-              setActivities={setActivities}
-              idx={idx}
-              showEdit={false}
-              edit={edit}
-            ></ActivityCard>
+            <li key={`routine:${routine.id}activity:${activity.id}`}>
+              <ActivityCard
+                token={token}
+                activity={activity}
+                activities={activities}
+                setActivities={setActivities}
+                idx={index}
+                showEdit={false}
+                editRoutineActivity={edit}
+              ></ActivityCard>
+            </li>
           );
         })}
-      </div>
+      </ol>
     </div>
   );
 };

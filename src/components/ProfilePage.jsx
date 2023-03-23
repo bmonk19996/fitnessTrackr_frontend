@@ -24,7 +24,7 @@ const ProfilePage = (props) => {
       {routines.map((routine, idx) => {
         return (
           <Routine
-            key={"routineidx: " + idx}
+            key={"ProfilePage Routines" + idx}
             token={token}
             routine={routine}
             idx={idx}
