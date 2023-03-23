@@ -120,13 +120,3 @@ const Routine = (props) => {
 };
 
 export default Routine;
-
-// <input
-//               id={`${"addActivity" + idx}`}
-//               type="text"
-//               name="activity"
-//               list={`activityList${idx}`}
-//               onChange={(event) => {
-//                 setAddActivityInput(event.target.value);
-//               }}
-//             />
