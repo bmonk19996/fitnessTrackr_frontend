@@ -90,7 +90,18 @@ body {
     flex-direction: column;
     word-wrap: break-word;
 }
+.RoutinePart{
+    display:flex;
+    justify-content: space-between;
+}
+.RoutineCardInfo{
 
+}
+.RoutineButtons{
+    background-color: #42103D;
+    color:#A7ABDD;
+    margin:5px;
+}
 .ActivityCard{
     background-color: #020887;
     color:#A7ABDD;
@@ -100,4 +111,9 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.activityCardButtons{
+    display: flex;
+    flex-direction: column;
+
 }

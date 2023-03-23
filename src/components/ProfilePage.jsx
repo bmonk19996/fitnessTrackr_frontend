@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getMyUser, getUserPublicRoutines } from "./API-adapt/index";
 import { Routine } from "./";
-
+import { Link } from "react-router-dom";
 const ProfilePage = (props) => {
   const token = props.token;
   const [user, setUser] = useState({});
@@ -21,6 +21,7 @@ const ProfilePage = (props) => {
   return (
     <div>
       <h1>{user.username}</h1>
+      <Link className="link create" to="/routines/createRoutine">Create New Routine</Link>
       {routines.map((routine, idx) => {
         return (
           <Routine

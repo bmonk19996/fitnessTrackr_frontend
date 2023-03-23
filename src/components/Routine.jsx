@@ -67,54 +67,66 @@ const Routine = (props) => {
 
   return (
     <div className="RoutineCard">
-      <h1>{routine.name}</h1>
-      <div>Created By: {routine.creatorName}</div>
-      <div>Goal: {routine.goal}</div>
-      {isOwner && edit ? (
-        <>
-          <Link className="link" to={`/routines/edit/${routine.id}`}>
-            <button>edit routine</button>
-          </Link>
-          <button
-            onClick={() => {
-              deleteMyRoutine();
-            }}
-          >
-            delete routine
-          </button>
-          <button onClick={() => showAddActivityList(addActivityInput)}>
-            Add Activity
-          </button>
+      <div className="RoutinePart">
+        <div className="RoutineCardInfo">
+          <h1>{routine.name}</h1>
+          <div>{routine.goal}</div>
+          <div>Created by: {routine.creatorName}</div>
+        </div>
+        {isOwner && edit ? (
+          <div className="RoutineCardButtons">
+            <Link
+              className="link"
+              to={`/routines/edit/${routine.id}`}
+            >
+              <button className="RoutineButtons">edit routine</button>
+            </Link>
+            <button
+              className="RoutineButtons"
+              onClick={() => {
+                deleteMyRoutine();
+              }}
+            >
+              delete routine
+            </button>
+            <button
+              className="RoutineButtons"
+              onClick={() => showAddActivityList(addActivityInput)}
+            >
+              Add Activity
+            </button>
 
-          <select
-            id={`${"activityList" + idx}`}
-            className="hidden"
-            onChange={() => {
-              setAddActivityInput(event.target.value);
-            }}
-          ></select>
-        </>
-      ) : null}
-      <div>
-        <h2>Activities: </h2>
+            <select
+              id={`${"activityList" + idx}`}
+              className="hidden"
+              onChange={() => {
+                setAddActivityInput(event.target.value);
+              }}
+            ></select>
+          </div>
+        ) : null}
       </div>
-      <ol>
-        {activities.map((activity, index) => {
-          return (
-            <li key={`routine:${routine.id}activity:${activity.id}`}>
-              <ActivityCard
-                token={token}
-                activity={activity}
-                activities={activities}
-                setActivities={setActivities}
-                idx={index}
-                showEdit={false}
-                editRoutineActivity={edit}
-              ></ActivityCard>
-            </li>
-          );
-        })}
-      </ol>
+      <div className="ActivityPart">
+        <h2>Activities: </h2>
+
+        <ol>
+          {activities.map((activity, index) => {
+            return (
+              <li key={`routine:${routine.id}activity:${activity.id}`}>
+                <ActivityCard
+                  token={token}
+                  activity={activity}
+                  activities={activities}
+                  setActivities={setActivities}
+                  idx={index}
+                  showEdit={false}
+                  editRoutineActivity={isOwner}
+                ></ActivityCard>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
     </div>
   );
 };
