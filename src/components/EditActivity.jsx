@@ -5,6 +5,7 @@ import{ updateActivity, getAllActivities } from "./API-adapt/index";
 //creatorid, isPublic, name, goal
 
 const EditActivity = (props) => {
+  const token = props.token
   const { activityId } = useParams();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -14,7 +15,8 @@ const EditActivity = (props) => {
   const submitActivity = async (event, fields) => {
     try {
       event.preventDefault();
-      const result = await updateActivity(localStorage.getItem("token"), activityId,{
+
+      const result = await updateActivity(token, activityId,{
         ...fields,
       });
       console.log(result);

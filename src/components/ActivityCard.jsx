@@ -2,15 +2,10 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { deleteRoutineActivity } from "./API-adapt";
 
-function isLoggedIn() {
-  if (localStorage.getItem("token")) return true;
-
-  return false;
-}
-
 const ActivityCard = (props) => {
 
-  const {editRoutineActivity,activity, showEdit, routineActivityId,idx, activities, setActivities} = props
+
+  const { token, editRoutineActivity,activity, showEdit, routineActivityId,idx, activities, setActivities} = props
 
 const deleteMyRoutineActivity = async()=>{
   console.log(activity.routineActivityId)
@@ -32,7 +27,8 @@ const deleteMyRoutineActivity = async()=>{
       <div>Description: {activity.description}</div>
       {activity.count ? <div>Count: {activity.count}</div> : null}
       {activity.duration ? <div>Duration: {activity.duration}</div> : null}
-      {isLoggedIn() && showEdit ? (
+
+      {token && showEdit ? (
         <>
           <Link to={`/activities/edit/${activity.id}`}>
             <button>edit Activity</button>

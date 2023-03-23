@@ -2,20 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getMyUser } from "./API-adapt";
 
-function isLoggedIn() {
-  if (localStorage.getItem("token")) return true;
 
-  return false;
-}
-
-const HomePage = () => {
+const HomePage = (props) => {
+  const token = props.token
   const [homeMessage, setHomeMessage] = useState("Welcome to Fitness Tracker");
   useEffect(() => {
     checkLogIn();
-  }, []);
+  }, [token]);
   const checkLogIn = async () => {
-    if (isLoggedIn()) {
-      const myUser = await getMyUser(localStorage.getItem("token"));
+    if (token) {
+      const myUser = await getMyUser(token);
       setHomeMessage(`welcome ${myUser.username} to fitness tracker`);
     }
   };
@@ -27,7 +23,7 @@ const HomePage = () => {
         <Link to="/routines">Routines</Link>
         <Link to="/activities">Activities</Link>
       </div>
-      {isLoggedIn() ? (
+      {token ? (
         <>
           <div>
           <Link to="/routines/createRoutine">Create Routine</Link>

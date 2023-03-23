@@ -1,14 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function isLoggedIn()
-  {
-    if(localStorage.getItem("token")) return true;
-    
-    return false;
-  } 
-
-const Navbar = () => {
+const Navbar = (props) => {
+  const token = props.token
   const navigate = useNavigate();
 
   function logOut() {
@@ -21,7 +15,7 @@ const Navbar = () => {
       <Link to="/">
         <h2> Fitness Tracker</h2>
       </Link>
-      {isLoggedIn() ? (
+      {token ? (
         <>
         <button
           className="nav-items"

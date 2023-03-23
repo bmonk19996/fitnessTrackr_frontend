@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getMyUser, getUserPublicRoutines, updateRoutine } from "./API-adapt";
 const EditRoutine = (props) => {
+  const token = props.token
   const { routineId } = useParams();
   const [name, setRoutineName] = useState("");
   const [goal, setRoutineGoal] = useState("");
@@ -14,9 +15,9 @@ const EditRoutine = (props) => {
 
   const setRoutine = async () => {
     try {
-      const myUser = await getMyUser(localStorage.getItem("token"));
+      const myUser = await getMyUser(token);
       const myRoutines = await getUserPublicRoutines(
-        localStorage.getItem("token"),
+        localStorage.token,
         myUser.username
       );
       let myRoutine = null;
@@ -48,7 +49,7 @@ const EditRoutine = (props) => {
     event.preventDefault();
     console.log("updating routine");
     const result = updateRoutine(
-      localStorage.getItem("token"),
+      token,
       routineId,
       fields
     );

@@ -1,47 +1,41 @@
-import React, {useState, useEffect} from "react";
-import {getAllActivities} from "./API-adapt/index";
+import React, { useState, useEffect } from "react";
+import { getAllActivities } from "./API-adapt/index";
 
-import {ActivityCard} from "./";
+import { ActivityCard } from "./";
 
-const Activities = (props)=>
-{
-    const [activities, setActivities] = useState([]);
+const Activities = (props) => {
+  const token = props.token;
+  console.log(token)
+  const [activities, setActivities] = useState([]);
 
-
-    const pullActivities = async () =>
-    {
-        try{
-        let result = await getAllActivities();
-        setActivities(result);
-        }
-        catch(e)
-        {
-            throw e;
-        }
+  const pullActivities = async () => {
+    try {
+      let result = await getAllActivities();
+      setActivities(result);
+    } catch (e) {
+      throw e;
     }
-    
-    useEffect(()=>
-    {
-        pullActivities();
-    }, []);
+  };
 
-    return(
-        <div id="ActivitiesPage">
-            <h1>Activities</h1>
-            {
-                activities.map((activity, idx)=>
-                {
-                    return <ActivityCard
-                    key={'activity idx: '+idx}
-                    activity={activity}
-                    activities={activities}
-                    setActivities={setActivities}
-                    showEdit={true}
-                    ></ActivityCard>
-                })
-            }
-        </div>
-    )
-}
+  useEffect(() => {
+    pullActivities();
+  }, []);
+  return (
+    <div id="ActivitiesPage">
+      <h1>Activities</h1>
+      {activities.map((activity, idx) => {
+        return (
+          <ActivityCard
+          token={token}
+            key={"activity idx: " + idx}
+            activity={activity}
+            showEdit={true}
+          ></ActivityCard>
+        );
+      })}
+    </div>
+  );
+};
+
 
 export default Activities;

@@ -6,6 +6,7 @@ import { makeActivity } from "./API-adapt/index";
 //creatorid, isPublic, name, goal
 
 const CreateActivity = (props) => {
+  const token = props.token
   const [name, setName] = useState(null);
   const [description, setDescription] = useState(null);
   const [message, setMessage] = useState("");
@@ -14,7 +15,7 @@ const CreateActivity = (props) => {
   const submitActivity = async (event, fields) => {
     try {
       event.preventDefault();
-      const result = await makeActivity(localStorage.getItem("token"), {
+      const result = await makeActivity(token, {
         ...fields,
       });
       console.log(result);
