@@ -13,6 +13,7 @@ import {
   EditActivity,
 } from "./";
 import CreateActivity from "./CreateActivity";
+import EditRoutineActivity from "./EditRoutineActivity";
 
 const Main = () => {
 const [token, setToken] = useState(localStorage.getItem("token"))
@@ -47,6 +48,10 @@ const [token, setToken] = useState(localStorage.getItem("token"))
           <Route
             path="/activities/edit/:activityId"
             element={<EditActivity token={token}></EditActivity>}
+          />
+                    <Route
+            path="/routineActivities/edit/:routineActivityId"
+            element={<EditRoutineActivity></EditRoutineActivity>}
           />
         </Routes>
       </div>

@@ -12,6 +12,11 @@ body {
     min-height: 40px;
 }
 
+.hidden
+{
+    display:none;
+} 
+
 .RoutineCard{
     border: solid;
     margin:5px;

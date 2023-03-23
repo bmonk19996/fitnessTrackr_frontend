@@ -36,6 +36,8 @@ const PublicRoutines = (props)=>
                     key={'routine idx: '+idx}
                     token={token}
                     routine={routine}
+                    editRoutineActivity={false}
+                    idx={idx}
                     ></Routine>
                 })
             }

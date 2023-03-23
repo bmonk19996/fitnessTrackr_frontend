@@ -8,6 +8,9 @@ const EditRoutine = (props) => {
   const [goal, setRoutineGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false);
   const [message, setMessage] = useState("");
+  const [routineActivities, seRoutineActivities] = useState([])
+
+
   const navigate = useNavigate();
 
   const setRoutine = async () => {
@@ -35,6 +38,8 @@ const EditRoutine = (props) => {
       throw e;
     }
   };
+
+
 
   useEffect(() => {
     setRoutine();

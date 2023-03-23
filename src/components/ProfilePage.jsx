@@ -33,6 +33,10 @@ console.log(user)
                      key={'routineidx: '+idx}
                      token={token}
                      routine={routine}
+                     idx={idx}
+                     routines={routines}
+                     setRoutines={setRoutines}
+                     editRoutineActivity={true}
                      ></Routine>
                  })
             }

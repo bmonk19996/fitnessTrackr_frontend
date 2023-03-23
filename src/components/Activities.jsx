@@ -20,7 +20,6 @@ const Activities = (props) => {
   useEffect(() => {
     pullActivities();
   }, []);
-
   return (
     <div id="ActivitiesPage">
       <h1>Activities</h1>
@@ -37,5 +36,6 @@ const Activities = (props) => {
     </div>
   );
 };
+
 
 export default Activities;

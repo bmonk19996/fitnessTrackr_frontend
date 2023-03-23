@@ -15,7 +15,8 @@ const EditActivity = (props) => {
   const submitActivity = async (event, fields) => {
     try {
       event.preventDefault();
-      const result = await updateActivity(token, {
+
+      const result = await updateActivity(token, activityId,{
         ...fields,
       });
       console.log(result);
