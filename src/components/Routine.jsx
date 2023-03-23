@@ -4,6 +4,7 @@ import {
   getAllActivities,
   addActivityToRoutine,
   deleteRoutine,
+  getUserPublicRoutines
 } from "./API-adapt/index";
 import { Link } from "react-router-dom";
 import { ActivityCard } from "./";
@@ -12,46 +13,47 @@ const Routine = (props) => {
   const { routine, routines, setRoutines, idx } = props;
   const editRoutineActivity = props.editRoutineActivity;
   const [isOwner, setIsOwner] = useState(false);
+  const [username,setUsername] = useState('')
   const [addActivityInput, setAddActivityInput] = useState("");
   const [activities, setActivities] = useState(routine.activities);
 
   async function checkIsOwner(creatorId) {
     const user = await getMyUser(localStorage.getItem("token"));
-    setIsOwner(user.id === creatorId);
+    if(user.id === creatorId){
+      setIsOwner(true)
+      setUsername(user.username)
+    }
   }
   useEffect(() => {
     checkIsOwner(routine.creatorId);
   });
 
   const showAddActivityList = async (activityName) => {
-    const activityList = document.getElementById("addActivity" + idx);
+    const activityList = document.getElementById("activityList" + idx);
     if (activityList.classList.contains("hidden")) {
       activityList.classList.remove("hidden");
-      console.log(activityList.classList);
       const allActivities = await getAllActivities();
-      const dataList = document.getElementById("activityList" + idx);
-      console.log(dataList);
       allActivities.map((activity, idx) => {
         let newOption = document.createElement("option");
-        console.log(activity.name);
+        newOption.innerText = activity.name;
         newOption.value = activity.name;
-        dataList.appendChild(newOption);
+        activityList.appendChild(newOption);
       });
     } else {
       const allActivities = await getAllActivities();
-      console.log("here");
       for (let i = 0; i < allActivities.length; i++) {
         if (allActivities[i].name === activityName) {
-          console.log("hello");
           const result = await addActivityToRoutine(
             localStorage.getItem("token"),
             { routineId: routine.id, activityId: allActivities[i].id }
           );
-          if (result.id) {
-            const newActivities = [...activities];
-            newActivities.push(allActivities[i])
-            console.log(newActivities)
-            setActivities(newActivities);
+          if (!result.message) {
+            console.log('hiting')
+            const myRoutines = await getUserPublicRoutines(localStorage.getItem("token"), username)
+            // const newActivities = [...activities];
+            // newActivities.push(allActivities[i]);
+            console.log(myRoutines)
+            setActivities(myRoutines[idx].activities);
           }
         }
       }
@@ -64,7 +66,6 @@ const Routine = (props) => {
       routine.id
     );
     if (!result.message) {
-      console.log("hit", routines);
       const newRoutines = [...routines];
       newRoutines.splice(idx, 1);
       setRoutines(newRoutines);
@@ -94,17 +95,11 @@ const Routine = (props) => {
           <button onClick={() => showAddActivityList(addActivityInput)}>
             Add Activity
           </button>
-          <input
-            id={`${"addActivity" + idx}`}
-            className="hidden"
-            type="text"
-            name="activity"
-            list={`activityList${idx}`}
-            onChange={(event) => {
-              setAddActivityInput(event.target.value);
-            }}
-          />
-          <datalist id={`${"activityList" + idx}`}></datalist>
+
+          <select id={`${"activityList" + idx}`} className="hidden"
+          onChange={()=>{setAddActivityInput(event.target.value)}}>
+            
+          </select>
         </>
       ) : null}
       <div>
@@ -130,3 +125,15 @@ const Routine = (props) => {
 };
 
 export default Routine;
+
+
+
+// <input
+//               id={`${"addActivity" + idx}`}
+//               type="text"
+//               name="activity"
+//               list={`activityList${idx}`}
+//               onChange={(event) => {
+//                 setAddActivityInput(event.target.value);
+//               }}
+//             />
