@@ -50,35 +50,40 @@ const EditRoutine = (props) => {
   };
 
   return (
-    <div>
-      <h2>Update Routine</h2>
+    <div className="createPage">
+      <h2>Create new Routine</h2>
       <form
+        className="createForm"
         onSubmit={(event) => updateMyRoutine(event, { isPublic, name, goal })}
-      >
-        <label>
-          Routine Name:
+      ><div className="createInfo">
+        <label className="createLabel">
+          <div className="createTitle">Routine Name:</div>
           <input
+            className="createInput"
             type="text"
             value={name}
             onChange={(event) => setRoutineName(event.target.value)}
           />
         </label>
-        <label>
-          Routine Goal:
+        <label className="createLabel">
+          <div className="createTitle">Routine Goal:</div>
           <input
+            className="createInput"
             type="text"
             value={goal}
             onChange={(event) => setRoutineGoal(event.target.value)}
           />
         </label>
-        <label>
-          Public:
+        <label className="createLabel">
+          <div className="createTitle">Public:</div>
           <input
+            className="createInput createCheckBox"
             type="checkbox"
             checked={isPublic}
             onChange={(event) => setIsPublic(!isPublic)}
           />
         </label>
+        </div>
         <button type="submit">Submit</button>
       </form>
       {message.length ? <h3>{message}</h3> : null}
@@ -87,3 +92,37 @@ const EditRoutine = (props) => {
 };
 
 export default EditRoutine;
+
+{/* <div>
+<h2>Update Routine</h2>
+<form
+  onSubmit={(event) => updateMyRoutine(event, { isPublic, name, goal })}
+>
+  <label>
+    Routine Name:
+    <input
+      type="text"
+      value={name}
+      onChange={(event) => setRoutineName(event.target.value)}
+    />
+  </label>
+  <label>
+    Routine Goal:
+    <input
+      type="text"
+      value={goal}
+      onChange={(event) => setRoutineGoal(event.target.value)}
+    />
+  </label>
+  <label>
+    Public:
+    <input
+      type="checkbox"
+      checked={isPublic}
+      onChange={(event) => setIsPublic(!isPublic)}
+    />
+  </label>
+  <button type="submit">Submit</button>
+</form>
+{message.length ? <h3>{message}</h3> : null}
+</div> */}
