@@ -4,16 +4,18 @@ import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const setToken = props.setToken;
+  const setUsername = props.setUsername;
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [myUsername, setMyUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
   const submitLogin = async (event) => {
     event.preventDefault();
-    const result = await login(username, password);
+    const result = await login(myUsername, password);
     if (result.token) {
       setToken(result.token);
+      setUsername(myUsername)
       localStorage.setItem("token", result.token);
       navigate("/");
     } else {
@@ -30,7 +32,7 @@ const Login = (props) => {
           <input
           className="input"
             type="text"
-            onInput={(event) => setUsername(event.target.value)}
+            onInput={(event) => setMyUsername(event.target.value)}
           />
         </label>
         <label className = "label">

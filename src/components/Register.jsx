@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 const Register = (props) => {
   const setToken = props.setToken;
+  const setUsername = props.setUsername;
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [myUsername, setMyUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
@@ -14,6 +15,7 @@ const Register = (props) => {
     const result = await register(username, password);
     if (result.token) {
       setToken(result.token);
+      setUsername(myUsername)
       localStorage.setItem("token", result.token);
       navigate("/");
     } else {
@@ -30,7 +32,7 @@ const Register = (props) => {
           <input
           className="input"
             type="text"
-            onInput={(event) => setUsername(event.target.value)}
+            onInput={(event) => setMyUsername(event.target.value)}
           />
         </label>
         <label className="label">
