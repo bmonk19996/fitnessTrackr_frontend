@@ -50,32 +50,32 @@ const EditRoutine = (props) => {
   };
 
   return (
-    <div className="createPage">
-      <h2>Create new Routine</h2>
+    <div className="container">
+      <h2 className="title">Create new Routine</h2>
       <form
-        className="createForm"
+        className="form"
         onSubmit={(event) => updateMyRoutine(event, { isPublic, name, goal })}
-      ><div className="createInfo">
-        <label className="createLabel">
-          <div className="createTitle">Routine Name:</div>
+      >
+        <label className="label">
+          Routine Name:
           <input
-            className="createInput"
+            className="input"
             type="text"
             value={name}
             onChange={(event) => setRoutineName(event.target.value)}
           />
         </label>
-        <label className="createLabel">
-          <div className="createTitle">Routine Goal:</div>
+        <label className="label">
+          Routine Goal:
           <input
-            className="createInput"
+            className="input"
             type="text"
             value={goal}
             onChange={(event) => setRoutineGoal(event.target.value)}
           />
         </label>
-        <label className="createLabel">
-          <div className="createTitle">Public:</div>
+        <label className="label">
+          Public:
           <input
             className="createInput createCheckBox"
             type="checkbox"
@@ -83,17 +83,17 @@ const EditRoutine = (props) => {
             onChange={(event) => setIsPublic(!isPublic)}
           />
         </label>
-        </div>
-        <button type="submit">Submit</button>
+        <button className="button">Submit</button>
       </form>
-      {message.length ? <h3>{message}</h3> : null}
+      {message.length ? <h3 className="message">{message}</h3> : null}
     </div>
   );
 };
 
 export default EditRoutine;
 
-{/* <div>
+{
+  /* <div>
 <h2>Update Routine</h2>
 <form
   onSubmit={(event) => updateMyRoutine(event, { isPublic, name, goal })}
@@ -125,4 +125,5 @@ export default EditRoutine;
   <button type="submit">Submit</button>
 </form>
 {message.length ? <h3>{message}</h3> : null}
-</div> */}
+</div> */
+}

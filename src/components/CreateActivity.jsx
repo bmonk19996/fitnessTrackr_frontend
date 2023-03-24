@@ -29,33 +29,29 @@ const CreateActivity = (props) => {
   };
 
   return (
-    <div id="createActivity" className="createPage">
-            <h2>Create new Activity</h2>
+    <div id="createActivity" className="container">
+            <h2 className="title">Create new Activity</h2>
       <form
-        className="createForm"
+        className="form"
         onSubmit={(event) => submitActivity(event, { name, description })}
       >
-        <div className="createInfo">
-          <label className="createLabel">
-            <div className="createTitle">Activity Name:</div>
+          <label className="label">Activity Name:
             <input
-              className="createInput"
+              className="input"
               type="text"
               onChange={(event) => setName(event.target.value)}
             />
           </label>
-          <label className="createLabel">
-            <div className="createTitle">Activity description:</div>
+          <label className="label">Activity description:
             <input
-              className="createInput"
+              className="input"
               type="text"
               onChange={(event) => setDescription(event.target.value)}
             />
           </label>
-        </div>
-        <button type="submit">Submit</button>
+        <button className="button">Submit</button>
       </form>
-      {message.length ? <h3>{message}</h3> : null}
+      {message.length ? <h3 className="message">{message}</h3> : null}
     </div>
   );
 };

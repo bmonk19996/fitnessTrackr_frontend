@@ -120,7 +120,7 @@ button {
   justify-content: center;
   margin-top: 15px;
 }
-.login-container {
+.container {
   background-color: #fcedee;
   border-radius: 35px;
   padding: 20px;
@@ -129,28 +129,32 @@ button {
   margin-top: 50px;
 }
 
-.login-title {
+.title {
   font-family: "Montserrat", sans-serif;
   color: #42103d;
   text-align: center;
 }
 
-.login-form {
+.form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+  
   margin-top: 20px;
 }
 
-.login-label {
+.label {
+    display:flex;
+    align-content: center;
+    justify-content: space-between;
   font-family: "Montserrat", sans-serif;
   color: #42103d;
   margin-top: 10px;
 }
 
-.login-input {
+.input {
   height: 30px;
-  width: 250px;
+  width: 200px;
   margin-left: 10px;
   margin-top: 5px;
   font-family: "Montserrat", sans-serif;
@@ -159,7 +163,7 @@ button {
   border: none;
 }
 
-.login-button {
+.button {
   margin-top: 20px;
   background-color: #19535f;
   color: #fcedee;
@@ -172,103 +176,14 @@ button {
   cursor: pointer;
 }
 
-.login-message {
+.message {
   font-family: "Montserrat", sans-serif;
   color: #42103d;
   text-align: center;
   margin-top: 20px;
 }
 
-.createPage{
-display:flex;
-flex-direction: column;
-}
-
-.createForm{
-    display: flex;
-    flex-direction: column;
-    padding:20px;
-    align-self: center;
-}
-.createInfo{
-    background-color:  #FCEDEE;
-    width:300px;
-    padding: 15px;
-    border-radius: 35px;
-    align-self: center;
-    font-size: large;
-    margin:10px;
-}
-.createLabel{
-display:flex;
-
-justify-content: space-between;
-
-
-}
-.createInput{
-    border-radius: 30px;
-}
 .createCheckBox{
     align-self: center;
-    margin-right:150px;
+    margin-right:100px;
 }
-.register-container {
-    background-color: #fcedee;
-    border-radius: 35px;
-    padding: 20px;
-    width: 400px;
-    margin: auto;
-    margin-top: 50px;
-  }
-  
-  .register-title {
-    font-family: "Montserrat", sans-serif;
-    color: #42103d;
-    text-align: center;
-  }
-  
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .register-label {
-    font-family: "Montserrat", sans-serif;
-    color: #42103d;
-    margin-top: 10px;
-  }
-  
-  .register-input {
-    height: 30px;
-    width: 250px;
-    margin-left: 10px;
-    margin-top: 5px;
-    font-family: "Montserrat", sans-serif;
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  .register-button {
-    margin-top: 20px;
-    background-color: #19535f;
-    color: #fcedee;
-    border: none;
-    height: 50px;
-    width: 150px;
-    font-family: "Montserrat", sans-serif;
-    border-radius: 35px;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .register-message {
-    font-family: "Montserrat", sans-serif;
-    color: #42103d;
-    text-align: center;
-    margin-top: 20px;
-  }
-
