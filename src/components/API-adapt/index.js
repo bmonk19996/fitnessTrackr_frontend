@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/api";
+const BASE_URL = "https://fitness-tracker-api-d57x.onrender.com/api";
 
 function makeHeaders(token) {
   const header = { "Content-Type": "application/json" };
