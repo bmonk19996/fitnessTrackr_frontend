@@ -22,24 +22,26 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-      <h2>Login To existing account</h2>
-      <form onSubmit={(event) => submitLogin(event)}>
-        <label>
+    <div className="login-container">
+      <h2 className="login-title">Login To existing account</h2>
+      <form className="login-form"onSubmit={(event) => submitLogin(event)}>
+        <label className = "login-label">
           username
           <input
+          className="login-input"
             type="text"
             onInput={(event) => setUsername(event.target.value)}
           />
         </label>
-        <label>
+        <label className = "login-label">
           password
           <input
-            type="text"
+          className="login-input"
+            type="password"
             onInput={(event) => setPassword(event.target.value)}
           />
         </label>
-        <button>submit</button>
+        <button className="login-button">submit</button>
       </form>
       {message.length ? <h3>{message}</h3> : null}
     </div>
