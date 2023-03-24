@@ -179,6 +179,40 @@ button {
   margin-top: 20px;
 }
 
+.createPage{
+display:flex;
+flex-direction: column;
+}
+
+.createForm{
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+    align-self: center;
+}
+.createInfo{
+    background-color:  #FCEDEE;
+    width:300px;
+    padding: 15px;
+    border-radius: 35px;
+    align-self: center;
+    font-size: large;
+    margin:10px;
+}
+.createLabel{
+display:flex;
+
+justify-content: space-between;
+
+
+}
+.createInput{
+    border-radius: 30px;
+}
+.createCheckBox{
+    align-self: center;
+    margin-right:150px;
+}
 .register-container {
     background-color: #fcedee;
     border-radius: 35px;
@@ -237,3 +271,4 @@ button {
     text-align: center;
     margin-top: 20px;
   }
+

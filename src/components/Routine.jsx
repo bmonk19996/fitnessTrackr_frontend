@@ -72,13 +72,13 @@ const Routine = (props) => {
           <h1>{routine.name}</h1>
           <div>{routine.goal}</div>
           <div>Created by: {routine.creatorName}</div>
+          {isOwner && edit ? (
+            <div>{routine.isPublic ? "public" : "not public"}</div>
+          ) : null}
         </div>
         {isOwner && edit ? (
           <div className="RoutineCardButtons">
-            <Link
-              className="link"
-              to={`/routines/edit/${routine.id}`}
-            >
+            <Link className="link" to={`/routines/edit/${routine.id}`}>
               <button className="RoutineButtons">edit routine</button>
             </Link>
             <button
@@ -103,7 +103,9 @@ const Routine = (props) => {
                 setAddActivityInput(event.target.value);
               }}
             >
-              <option>select an activity(hit add activity again to confirm)</option>
+              <option>
+                select an activity(hit add activity again to confirm)
+              </option>
             </select>
           </div>
         ) : null}

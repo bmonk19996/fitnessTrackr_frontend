@@ -32,31 +32,37 @@ const CreateRoutine = (props) => {
   };
 
   return (
-    <div>
+    <div className="createPage">
+      <h2>Create new Routine</h2>
       <form
+        className="createForm"
         onSubmit={(event) => submitRoutine(event, { isPublic, name, goal })}
-      >
-        <label>
-          Routine Name:
+      ><div className="createInfo">
+        <label className="createLabel">
+          <div className="createTitle">Routine Name:</div>
           <input
+            className="createInput"
             type="text"
             onChange={(event) => setRoutineName(event.target.value)}
           />
         </label>
-        <label>
-          Routine Goal:
+        <label className="createLabel">
+          <div className="createTitle">Routine Goal:</div>
           <input
+            className="createInput"
             type="text"
             onChange={(event) => setRoutineGoal(event.target.value)}
           />
         </label>
-        <label>
-          Public:
+        <label className="createLabel">
+          <div className="createTitle">Public:</div>
           <input
+            className="createInput createCheckBox"
             type="checkbox"
             onChange={(event) => setIsPublic(event.target.value)}
           />
         </label>
+        </div>
         <button type="submit">Submit</button>
       </form>
       {message.length ? <h3>{message}</h3> : null}
