@@ -15,7 +15,7 @@ const EditActivity = (props) => {
   const submitActivity = async (event, fields) => {
     try {
       event.preventDefault();
-
+      console.log('hit')
       const result = await updateActivity(token, activityId, {
         ...fields,
       });
@@ -56,8 +56,8 @@ const EditActivity = (props) => {
   }, []);
 
   return (
-    <div id="createActivity" className="container">
-            <h2 className="title">Create new Activity</h2>
+    <div id="EditActivity" className="container">
+            <h2 className="title">Edit Activity</h2>
       <form
         className="form"
         onSubmit={(event) => submitActivity(event, { name, description })}
