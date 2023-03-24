@@ -17,10 +17,10 @@ import EditRoutineActivity from "./EditRoutineActivity";
 
 const Main = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
-
+  const [username, setUsername] = useState(localStorage.getItem("username"))
   return (
     <div id="main">
-      <Navbar token={token} setToken={setToken} />
+      <Navbar token={token} setToken={setToken} username={username} setUsername={setUsername} />
       <div>
         <Routes>
           <Route path="/" element={<HomePage token={token}></HomePage>}></Route>
@@ -32,10 +32,10 @@ const Main = () => {
             path="/activities"
             element={<Activities token={token}></Activities>}
           ></Route>
-          <Route path="/login" element={<Login setToken={setToken}></Login>} />
+          <Route path="/login" element={<Login setToken={setToken} setUsername={setUsername}></Login>} />
           <Route
             path="/register"
-            element={<Register setToken={setToken}></Register>}
+            element={<Register setToken={setToken} setUsername={setUsername}></Register>}
           />
           <Route
             path="routines/createRoutine"
@@ -47,7 +47,7 @@ const Main = () => {
           />
           <Route
             path="/ProfilePage"
-            element={<ProfilePage token={token}></ProfilePage>}
+            element={<ProfilePage token={token} username={username}></ProfilePage>}
           />
           <Route
             path="/routines/edit/:routineId"

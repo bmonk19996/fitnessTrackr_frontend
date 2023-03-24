@@ -4,7 +4,7 @@ import { Routine } from "./";
 import { Link } from "react-router-dom";
 const ProfilePage = (props) => {
   const token = props.token;
-  const [user, setUser] = useState({});
+  const username = props.username;
   const [routines, setRoutines] = useState([]);
 
   useEffect(() => {
@@ -12,15 +12,12 @@ const ProfilePage = (props) => {
   }, []);
 
   const setUserInfo = async () => {
-    const myUser = await getMyUser(token);
-    const myRoutines = await getUserPublicRoutines(token, myUser.username);
-
-    setUser(myUser);
+    const myRoutines = await getUserPublicRoutines(token, username);
     setRoutines(myRoutines);
   };
   return (
     <div >
-      <h1>{user.username}'s Page</h1>
+      <h1>{username}'s Page</h1>
       <Link className="link create" to="/routines/createRoutine">
         Create New Routine
       </Link>

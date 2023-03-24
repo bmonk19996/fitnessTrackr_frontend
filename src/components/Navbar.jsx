@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getMyUser } from "./API-adapt";
 const Navbar = (props) => {
-  const {token, setToken} = props
+  const {token, setToken, username, setUsername} = props
   const navigate = useNavigate();
-  const [userName, setUsername] = useState("");
   function logOut() {
     localStorage.removeItem("token");
+    localStorage.removeItem("username")
+    setUsername('')
     setToken('')
     navigate("./");
   }
@@ -24,7 +25,7 @@ const Navbar = (props) => {
   return (
     <div>
       <div id="navbar">
-        <h2>{`Welcome ${userName} to Fitness Tracker`}</h2>
+        <h2>{`Welcome ${username} to Fitness Tracker`}</h2>
         {token ? (
           <>
             <button
