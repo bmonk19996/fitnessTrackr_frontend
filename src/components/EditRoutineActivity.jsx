@@ -24,32 +24,32 @@ const EditRoutineActivity = (props) => {
   };
 
   return (
-    <div>
-      <h2>Update Routine Activity</h2>
-      <form
+    <div className="container">
+      <h2 className="title">Update Routine Activity</h2>
+      <form className="form"
         onSubmit={(event) =>
           updateMyRoutineActivity(event, { duration, count })
         }
       >
-        <label>
+        <label className="label">
           Duration:
-          <input
+          <input className="input"
             type="number"
             value={duration}
             onChange={(event) => setDuration(event.target.value)}
           />
         </label>
-        <label>
+        <label className="label">
           Count:
-          <input
+          <input className="input"
             type="number"
             value={count}
             onChange={(event) => setCount(event.target.value)}
           />
         </label>
-        <button type="submit">Submit</button>
+        <button className="button">Submit</button>
       </form>
-      {message.length ? <h3>{message}</h3> : null}
+      {message.length ? <h3 className="message">{message}</h3> : null}
     </div>
   );
 };
