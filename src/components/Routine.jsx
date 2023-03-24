@@ -4,54 +4,51 @@ import {
   getAllActivities,
   addActivityToRoutine,
   deleteRoutine,
+  getUserPublicRoutines,
 } from "./API-adapt/index";
 import { Link } from "react-router-dom";
 import { ActivityCard } from "./";
 
 const Routine = (props) => {
-  const { routine, routines, setRoutines, idx } = props;
-  const editRoutineActivity = props.editRoutineActivity;
+  const { token, routine, routines, setRoutines, idx, edit } = props;
   const [isOwner, setIsOwner] = useState(false);
+  const [username, setUsername] = useState("");
   const [addActivityInput, setAddActivityInput] = useState("");
   const [activities, setActivities] = useState(routine.activities);
 
   async function checkIsOwner(creatorId) {
     const user = await getMyUser(localStorage.getItem("token"));
-    setIsOwner(user.id === creatorId);
+    if (user.id === creatorId) {
+      setIsOwner(true);
+      setUsername(user.username);
+    }
   }
   useEffect(() => {
     checkIsOwner(routine.creatorId);
   });
 
   const showAddActivityList = async (activityName) => {
-    const activityList = document.getElementById("addActivity" + idx);
+    const activityList = document.getElementById("activityList" + idx);
     if (activityList.classList.contains("hidden")) {
       activityList.classList.remove("hidden");
-      console.log(activityList.classList);
       const allActivities = await getAllActivities();
-      const dataList = document.getElementById("activityList" + idx);
-      console.log(dataList);
       allActivities.map((activity, idx) => {
         let newOption = document.createElement("option");
-        console.log(activity.name);
+        newOption.innerText = activity.name;
         newOption.value = activity.name;
-        dataList.appendChild(newOption);
+        activityList.appendChild(newOption);
       });
     } else {
       const allActivities = await getAllActivities();
-      console.log("here");
       for (let i = 0; i < allActivities.length; i++) {
         if (allActivities[i].name === activityName) {
-          console.log("hello");
-          const result = await addActivityToRoutine(
-            localStorage.getItem("token"),
-            { routineId: routine.id, activityId: allActivities[i].id }
-          );
-          if (result.id) {
-            const newActivities = [...activities];
-            newActivities.push(allActivities[i])
-            console.log(newActivities)
-            setActivities(newActivities);
+          const result = await addActivityToRoutine(token, {
+            routineId: routine.id,
+            activityId: allActivities[i].id,
+          });
+          if (!result.message) {
+            const myRoutines = await getUserPublicRoutines(token, username);
+            setActivities(myRoutines[idx].activities);
           }
         }
       }
@@ -59,12 +56,8 @@ const Routine = (props) => {
   };
 
   const deleteMyRoutine = async () => {
-    const result = await deleteRoutine(
-      localStorage.getItem("token"),
-      routine.id
-    );
+    const result = await deleteRoutine(token, routine.id);
     if (!result.message) {
-      console.log("hit", routines);
       const newRoutines = [...routines];
       newRoutines.splice(idx, 1);
       setRoutines(newRoutines);
@@ -74,56 +67,67 @@ const Routine = (props) => {
 
   return (
     <div className="RoutineCard">
-      <h1>Routine</h1>
-      <div>Id: {routine.id}</div>
-      <div>Creator: {routine.creatorName}</div>
-      <div>Name: {routine.name}</div>
-      <div>Goal: {routine.goal}</div>
-      {isOwner ? (
-        <>
-          <Link to={`/routines/edit/${routine.id}`}>
-            <button>edit routine</button>
-          </Link>
-          <button
-            onClick={() => {
-              deleteMyRoutine();
-            }}
-          >
-            delete routine
-          </button>
-          <button onClick={() => showAddActivityList(addActivityInput)}>
-            Add Activity
-          </button>
-          <input
-            id={`${"addActivity" + idx}`}
-            className="hidden"
-            type="text"
-            name="activity"
-            list={`activityList${idx}`}
-            onChange={(event) => {
-              setAddActivityInput(event.target.value);
-            }}
-          />
-          <datalist id={`${"activityList" + idx}`}></datalist>
-        </>
-      ) : null}
-      <div>
-        <h2>Activities: </h2>
+      <div className="RoutinePart">
+        <div className="RoutineCardInfo">
+          <h1>{routine.name}</h1>
+          <div>{routine.goal}</div>
+          <div>Created by: {routine.creatorName}</div>
+        </div>
+        {isOwner && edit ? (
+          <div className="RoutineCardButtons">
+            <Link
+              className="link"
+              to={`/routines/edit/${routine.id}`}
+            >
+              <button className="RoutineButtons">edit routine</button>
+            </Link>
+            <button
+              className="RoutineButtons"
+              onClick={() => {
+                deleteMyRoutine();
+              }}
+            >
+              delete routine
+            </button>
+            <button
+              className="RoutineButtons"
+              onClick={() => showAddActivityList(addActivityInput)}
+            >
+              Add Activity
+            </button>
+
+            <select
+              id={`${"activityList" + idx}`}
+              className="hidden"
+              onChange={() => {
+                setAddActivityInput(event.target.value);
+              }}
+            >
+              <option>select an activity(hit add activity again to confirm)</option>
+            </select>
+          </div>
+        ) : null}
       </div>
-      <div>
-        {activities.map((activity, idx) => {
-          return (
-            <ActivityCard
-              key={"routine activity idx: " + idx}
-              activity={activity}
-              activities={activities}
-              setActivities={setActivities}
-              idx={idx}
-              showEdit={false}
-              editRoutineActivity={editRoutineActivity}
-            ></ActivityCard>
-          );
-        })}
+      <div className="ActivityPart">
+        <h2>Activities: </h2>
+
+        <ol>
+          {activities.map((activity, index) => {
+            return (
+              <li key={`routine:${routine.id}activity:${activity.id}`}>
+                <ActivityCard
+                  token={token}
+                  activity={activity}
+                  activities={activities}
+                  setActivities={setActivities}
+                  idx={index}
+                  showEdit={false}
+                  editRoutineActivity={isOwner}
+                ></ActivityCard>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </div>
   );

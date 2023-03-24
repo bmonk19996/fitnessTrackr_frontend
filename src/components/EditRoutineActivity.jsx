@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { updateRoutineActivities } from "./API-adapt";
+
 const EditRoutineActivity = (props) => {
+  const token = props.token;
   const { routineActivityId } = useParams();
   const [duration, setDuration] = useState(0);
   const [count, setCount] = useState(0);
@@ -13,15 +15,9 @@ const EditRoutineActivity = (props) => {
 
   const updateMyRoutineActivity = async (event, fields) => {
     event.preventDefault();
-    console.log("updating routineActivity");
-    const result = updateRoutineActivities(
-      localStorage.getItem("token"),
-      routineActivityId,
-      fields
-    );
-    console.log(result)
+    const result = updateRoutineActivities(token, routineActivityId, fields);
     if (!result.message) {
-        navigate('/profilePage')
+      navigate("/profilePage");
     } else {
       setMessage(result.message);
     }
@@ -31,7 +27,9 @@ const EditRoutineActivity = (props) => {
     <div>
       <h2>Update Routine Activity</h2>
       <form
-        onSubmit={(event) => updateMyRoutineActivity(event, { duration, count })}
+        onSubmit={(event) =>
+          updateMyRoutineActivity(event, { duration, count })
+        }
       >
         <label>
           Duration:

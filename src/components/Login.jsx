@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { login } from "./API-adapt";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
+  const setToken = props.setToken;
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,9 +13,9 @@ const Login = () => {
     event.preventDefault();
     const result = await login(username, password);
     if (result.token) {
+      setToken(result.token);
       localStorage.setItem("token", result.token);
       navigate("/");
-      window.location.reload();
     } else {
       setMessage(result.message);
     }
@@ -46,5 +47,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

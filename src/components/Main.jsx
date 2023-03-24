@@ -16,39 +16,50 @@ import CreateActivity from "./CreateActivity";
 import EditRoutineActivity from "./EditRoutineActivity";
 
 const Main = () => {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
   return (
     <div id="main">
-      <Navbar />
+      <Navbar token={token} setToken={setToken} />
       <div>
         <Routes>
-          <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Route path="/" element={<HomePage token={token}></HomePage>}></Route>
           <Route
             path="/routines"
-            element={<PublicRoutines></PublicRoutines>}
+            element={<PublicRoutines token={token}></PublicRoutines>}
           ></Route>
-          <Route path="/activities" element={<Activities></Activities>}></Route>
-          <Route path="/login" element={<Login></Login>} />
-          <Route path="/register" element={<Register></Register>} />
+          <Route
+            path="/activities"
+            element={<Activities token={token}></Activities>}
+          ></Route>
+          <Route path="/login" element={<Login setToken={setToken}></Login>} />
+          <Route
+            path="/register"
+            element={<Register setToken={setToken}></Register>}
+          />
           <Route
             path="routines/createRoutine"
-            element={<CreateRoutine></CreateRoutine>}
+            element={<CreateRoutine token={token}></CreateRoutine>}
           />
           <Route
             path="activities/createActivity"
-            element={<CreateActivity></CreateActivity>}
+            element={<CreateActivity token={token}></CreateActivity>}
           />
-          <Route path="/ProfilePage" element={<ProfilePage></ProfilePage>} />
+          <Route
+            path="/ProfilePage"
+            element={<ProfilePage token={token}></ProfilePage>}
+          />
           <Route
             path="/routines/edit/:routineId"
-            element={<EditRoutine></EditRoutine>}
+            element={<EditRoutine token={token}></EditRoutine>}
           />
           <Route
             path="/activities/edit/:activityId"
-            element={<EditActivity></EditActivity>}
+            element={<EditActivity token={token}></EditActivity>}
           />
-                    <Route
+          <Route
             path="/routineActivities/edit/:routineActivityId"
-            element={<EditRoutineActivity></EditRoutineActivity>}
+            element={<EditRoutineActivity token={token}></EditRoutineActivity>}
           />
         </Routes>
       </div>

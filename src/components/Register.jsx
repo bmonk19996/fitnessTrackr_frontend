@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { register } from "./API-adapt";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
+  const setToken = props.setToken;
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -11,11 +12,10 @@ const Register = () => {
   const submitLogin = async (event) => {
     event.preventDefault();
     const result = await register(username, password);
-    console.log(result)
     if (result.token) {
+      setToken(result.token);
       localStorage.setItem("token", result.token);
       navigate("/");
-      window.location.reload();
     } else {
       setMessage(result.message);
     }
