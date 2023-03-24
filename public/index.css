@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:ital,wght@0,200;0,300;0,500;1,600&display=swap");
-@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
-
-
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
 
 /*
 new colors: 
@@ -13,119 +11,229 @@ blue: #020887
 dark blue: 090446
 */
 body {
-    margin: 0;
-    background-color: #a7abdd;
+  margin: 0;
+  background-color: #a7abdd;
 }
 #navbar {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items:center;
-    justify-content: space-between;
-    background-color: #020887;
-    color: #fcedee;
-    padding: 15px;
-    font-family: "Gloock", serif;
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #020887;
+  color: #fcedee;
+  padding: 15px;
+  font-family: "Gloock", serif;
+}
 
-  button {
-    margin: auto;
-    display: flex;
-    align-items:center;
-    text-align: center;
+button {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #fcedee;
+  color: #020887;
+  border: none;
+  height: 50px;
+  width: 65px;
+  font-family: "Gloock", serif;
+  border-radius: 35px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.link {
+  color: #fcedee;
+  text-decoration: none;
+}
+.tabs {
+  display: flex;
+  font-size: larger;
+  background-color: #020887;
+}
+.tab {
+  padding: 5px;
+  background-color: #a7abdd;
+  color: #42103d;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+.create {
+  margin: 20px;
+  background-color: #fcedee;
+  color: #020887;
+  border: none;
+  height: 50px;
+  width: 65px;
+  font-family: "Gloock", serif;
+  border-radius: 35px;
+  padding: 10px;
+}
+.RoutineCard {
+  background-color: #fcedee;
+  color: #42103d;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 35px;
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+.RoutinePart {
+  display: flex;
+  justify-content: space-between;
+}
+.RoutineCardButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.RoutineButtons {
+  background-color: #42103d;
+  color: #a7abdd;
+  margin: 5px;
+}
+.ActivityCard {
+  background-color: #020887;
+  color: #a7abdd;
+  border-radius: 35px;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  width: 200px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.activityCardButtons {
+  display: flex;
+  flex-direction: column;
+}
+.PageDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+}
+.login-container {
+  background-color: #fcedee;
+  border-radius: 35px;
+  padding: 20px;
+  width: 400px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.login-title {
+  font-family: "Montserrat", sans-serif;
+  color: #42103d;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.login-label {
+  font-family: "Montserrat", sans-serif;
+  color: #42103d;
+  margin-top: 10px;
+}
+
+.login-input {
+  height: 30px;
+  width: 250px;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-family: "Montserrat", sans-serif;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.login-button {
+  margin-top: 20px;
+  background-color: #19535f;
+  color: #fcedee;
+  border: none;
+  height: 50px;
+  width: 150px;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 35px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.login-message {
+  font-family: "Montserrat", sans-serif;
+  color: #42103d;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-container {
     background-color: #fcedee;
-    color: #020887;
-    border: none;
-    height: 50px;
-    width: 65px;
-    font-family: "Gloock", serif;
     border-radius: 35px;
-    margin-right: 10px;
-    padding: 10px;
-  }
-
-.hidden
-{
-    display:none;
-} 
-
-
-
-.link{
-    color: #fcedee;
-    text-decoration: none;
-}
-.tabs{
-    display:flex;
-    font-size:larger;
-    background-color: #020887;
-
-}
-.tab{
-    padding: 5px;
-    background-color: #a7abdd;
-    color:#42103D;
-    border-top-right-radius:20px;
-    border-top-left-radius: 20px;
-}
-.create{
-    margin: 20px;
-    background-color: #fcedee;
-    color: #020887;
-    border: none;
-    height: 50px;
-    width: 65px;
-    font-family: "Gloock", serif;
-    border-radius: 35px;
-    padding: 10px;
-}
-.RoutineCard{
-    background-color: #FCEDEE;
-    color:#42103D;
-    margin:10px;
-    padding:20px;
-    border-radius: 35px;
-    display:flex;
+    padding: 20px;
     width: 400px;
+    margin: auto;
+    margin-top: 50px;
+  }
+  
+  .register-title {
+    font-family: "Montserrat", sans-serif;
+    color: #42103d;
+    text-align: center;
+  }
+  
+  .register-form {
+    display: flex;
     flex-direction: column;
-    word-wrap: break-word;
-
-}
-.RoutinePart{
-    display:flex;
-    justify-content: space-between;
-}
-.RoutineCardButtons{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-
-}
-.RoutineButtons{
-    background-color: #42103D;
-    color:#A7ABDD;
-    margin:5px;
-}
-.ActivityCard{
-    background-color: #020887;
-    color:#A7ABDD;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .register-label {
+    font-family: "Montserrat", sans-serif;
+    color: #42103d;
+    margin-top: 10px;
+  }
+  
+  .register-input {
+    height: 30px;
+    width: 250px;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-family: "Montserrat", sans-serif;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .register-button {
+    margin-top: 20px;
+    background-color: #19535f;
+    color: #fcedee;
+    border: none;
+    height: 50px;
+    width: 150px;
+    font-family: "Montserrat", sans-serif;
     border-radius: 35px;
-    padding:20px;
-    margin: 10px;
-    display: flex;
-    width:200px;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.activityCardButtons{
-    display: flex;
-    flex-direction: column;
-
-}
-.PageDisplay{
-display:flex;
-flex-wrap: wrap;
-justify-content: center;
-margin-top: 15px;
-}
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .register-message {
+    font-family: "Montserrat", sans-serif;
+    color: #42103d;
+    text-align: center;
+    margin-top: 20px;
+  }

@@ -22,26 +22,28 @@ const Register = (props) => {
   };
 
   return (
-    <div>
-      <h2>Register new account</h2>
+    <div className ="register-container">
+      <h2 className ="register-title">Register new account</h2>
       <form onSubmit={(event) => submitLogin(event)}>
-        <label>
+        <label className = "register-label">
           username
           <input
+          className="register-input"
             type="text"
             onInput={(event) => setUsername(event.target.value)}
           />
         </label>
-        <label>
+        <label className="register-label">
           password
           <input
+            className="register-input"
             type="text"
             onInput={(event) => setPassword(event.target.value)}
           />
         </label>
-        <button>submit</button>
+        <button className = "register-button">submit</button>
       </form>
-      {message.length ? <h3>{message}</h3> : null}
+      {message.length ? <h3 className="register-message">{message}</h3> : null}
     </div>
   );
 };
