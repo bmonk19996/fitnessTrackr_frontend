@@ -22,17 +22,21 @@ const Activities = (props) => {
   return (
     <div id="ActivitiesPage">
       <h1>Activities</h1>
-      <Link className="link create" to="/activities/createActivity">Create New Activity</Link>
-      {activities.map((activity, idx) => {
-        return (
-          <ActivityCard
-            token={token}
-            key={"activity idx: " + idx}
-            activity={activity}
-            showEdit={true}
-          ></ActivityCard>
-        );
-      })}
+      <Link className="link create" to="/activities/createActivity">
+        Create New Activity
+      </Link>
+      <div className="PageDisplay">
+        {activities.map((activity, idx) => {
+          return (
+            <ActivityCard
+              token={token}
+              key={"activity idx: " + idx}
+              activity={activity}
+              showEdit={true}
+            ></ActivityCard>
+          );
+        })}
+      </div>
     </div>
   );
 };

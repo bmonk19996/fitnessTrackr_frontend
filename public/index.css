@@ -83,18 +83,23 @@ body {
 .RoutineCard{
     background-color: #FCEDEE;
     color:#42103D;
-    margin:25px;
+    margin:10px;
     padding:20px;
     border-radius: 35px;
     display:flex;
+    width: 400px;
     flex-direction: column;
     word-wrap: break-word;
+
 }
 .RoutinePart{
     display:flex;
     justify-content: space-between;
 }
-.RoutineCardInfo{
+.RoutineCardButtons{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 
 }
 .RoutineButtons{
@@ -109,6 +114,7 @@ body {
     padding:20px;
     margin: 10px;
     display: flex;
+    width:200px;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -116,4 +122,10 @@ body {
     display: flex;
     flex-direction: column;
 
+}
+.PageDisplay{
+display:flex;
+flex-wrap: wrap;
+justify-content: center;
+margin-top: 15px;
 }

@@ -19,22 +19,26 @@ const ProfilePage = (props) => {
     setRoutines(myRoutines);
   };
   return (
-    <div>
-      <h1>{user.username}</h1>
-      <Link className="link create" to="/routines/createRoutine">Create New Routine</Link>
-      {routines.map((routine, idx) => {
-        return (
-          <Routine
-            key={"ProfilePage Routines" + idx}
-            token={token}
-            routine={routine}
-            idx={idx}
-            routines={routines}
-            setRoutines={setRoutines}
-            edit={true}
-          ></Routine>
-        );
-      })}
+    <div >
+      <h1>{user.username}'s Page</h1>
+      <Link className="link create" to="/routines/createRoutine">
+        Create New Routine
+      </Link>
+      <div className="PageDisplay">
+        {routines.map((routine, idx) => {
+          return (
+            <Routine
+              key={"ProfilePage Routines" + idx}
+              token={token}
+              routine={routine}
+              idx={idx}
+              routines={routines}
+              setRoutines={setRoutines}
+              edit={true}
+            ></Routine>
+          );
+        })}
+      </div>
     </div>
   );
 };

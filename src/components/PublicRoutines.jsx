@@ -21,20 +21,21 @@ const PublicRoutines = (props) => {
   }, []);
 
   return (
-    <div id="publicRoutinePage">
+    <div id="publicRoutinePage" >
       <h1>Routines</h1>
-
-      {routines.map((routine, idx) => {
-        return (
-          <Routine
-            key={"routine idx: " + idx}
-            token={token}
-            routine={routine}
-            edit={false}
-            idx={idx}
-          ></Routine>
-        );
-      })}
+      <div className="PageDisplay">
+        {routines.map((routine, idx) => {
+          return (
+            <Routine
+              key={"routine idx: " + idx}
+              token={token}
+              routine={routine}
+              edit={false}
+              idx={idx}
+            ></Routine>
+          );
+        })}
+      </div>
     </div>
   );
 };

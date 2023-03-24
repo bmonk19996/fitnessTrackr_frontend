@@ -102,7 +102,9 @@ const Routine = (props) => {
               onChange={() => {
                 setAddActivityInput(event.target.value);
               }}
-            ></select>
+            >
+              <option>select an activity(hit add activity again to confirm)</option>
+            </select>
           </div>
         ) : null}
       </div>
