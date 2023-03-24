@@ -8,6 +8,7 @@ const EditActivity = (props) => {
   const token = props.token;
   const { activityId } = useParams();
   const [name, setName] = useState("");
+  const[ startName,setStartName] = useState("")
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
@@ -15,7 +16,10 @@ const EditActivity = (props) => {
   const submitActivity = async (event, fields) => {
     try {
       event.preventDefault();
-      console.log('hit')
+      if(name === startName){
+        delete fields.name
+      }
+      console.log(fields)
       const result = await updateActivity(token, activityId, {
         ...fields,
       });
@@ -45,6 +49,7 @@ const EditActivity = (props) => {
       }
 
       setName(myActivity.name);
+      setStartName(myActivity.name)
       setDescription(myActivity.description);
     } catch (e) {
       throw e;

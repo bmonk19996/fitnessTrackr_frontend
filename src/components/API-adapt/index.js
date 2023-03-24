@@ -232,6 +232,7 @@ export const makeActivity = async (token, fields) => {
 
 export const updateActivity = async (token, activityId, fields) => {
   try {
+    console.log('hit2')
     const response = await fetch(`${BASE_URL}/activities/${activityId}`, {
       method: "PATCH",
       headers: makeHeaders(token),
