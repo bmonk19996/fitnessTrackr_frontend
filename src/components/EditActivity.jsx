@@ -8,6 +8,7 @@ const EditActivity = (props) => {
   const token = props.token;
   const { activityId } = useParams();
   const [name, setName] = useState("");
+  const[ startName,setStartName] = useState("")
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
@@ -15,7 +16,10 @@ const EditActivity = (props) => {
   const submitActivity = async (event, fields) => {
     try {
       event.preventDefault();
-
+      if(name === startName){
+        delete fields.name
+      }
+      console.log(fields)
       const result = await updateActivity(token, activityId, {
         ...fields,
       });
@@ -45,6 +49,7 @@ const EditActivity = (props) => {
       }
 
       setName(myActivity.name);
+      setStartName(myActivity.name)
       setDescription(myActivity.description);
     } catch (e) {
       throw e;
@@ -56,8 +61,8 @@ const EditActivity = (props) => {
   }, []);
 
   return (
-    <div id="createActivity" className="container">
-            <h2 className="title">Create new Activity</h2>
+    <div id="EditActivity" className="container">
+            <h2 className="title">Edit Activity</h2>
       <form
         className="form"
         onSubmit={(event) => submitActivity(event, { name, description })}

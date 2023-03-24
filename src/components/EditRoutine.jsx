@@ -41,7 +41,7 @@ const EditRoutine = (props) => {
 
   const updateMyRoutine = async (event, fields) => {
     event.preventDefault();
-    const result = await updateRoutine(token, routineId, fields);
+    const result = await updateRoutine(token, routineId,{...fields});
     if (!result.message) {
       navigate("/profilePage");
     } else {
